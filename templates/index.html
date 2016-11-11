@@ -265,7 +265,70 @@
       margin-top: -20px;
       text-align: right;
     }
+/* for footer*/
+    .social {
+      position: relative;
+      width: 100%;
+      top: 94%;
+      text-align: center;
+      transform: translateY(-50%);
   
+    }
+
+    .social .link {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px dashed white;
+      background-clip: content-box;
+      padding: 10px;
+      transition: .5s;
+      color: #D7D0BE;
+      margin-left: 15px;
+      margin-right: 15px;
+      text-shadow:
+       0 -1px 0 rgba(0, 0, 0, 0.2),
+       0 1px 0 rgba(255, 255, 255, 0.2);
+      font-size: 70px;
+    }
+
+    .social .link span {
+      display: block;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .social .link:hover {
+      padding: 20px;
+      color: white;
+      margin-left: -5px;
+      transform: translateX(10px) rotate(360deg);
+    }
+
+    .social .link.google-plus {
+      background-color: tomato;
+      color: white;
+    }
+
+    .social .link.twitter {
+       background-color: #00ACEE;
+       color: white;
+    }
+
+    .social .link.facebook {
+       background-color: #3B5998;
+       color: white;
+    }
+
+
+
+
     </style>
     <script type="text/javascript">
                // Get the modal
@@ -744,13 +807,18 @@ $('.tab a').on('click', function (e) {
           </div>
           
     </div> <!--/form --> 
-    <!-- Map Section -->
-    <div id="map"></div>
+    
 
     <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p>Copyright &copy; Your Website 2016</p>
+            <div class="social">
+  		<a href="https://www.facebook.com/kossiitkgp/?fref=ts" class="link facebook" target="_parent"><img src="/static/fb.png" style ="postion:absolute; width:100px;"></a>
+
+  		<a href="https://github.com/kossiitkgp" class="link twitter" target="_parent"><img src = "/static/git.png" style = "position:relative; left:1%; border-radius:50%;  width:100px; height:100px;"></span></a>
+
+  		<a href="https://plus.google.com/+OndřejBárta-Otaku" class="link google-plus" target="_parent"><img src = ""></span></a>
+	    </div>
         </div>
     </footer>
 
