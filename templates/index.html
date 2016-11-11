@@ -56,9 +56,289 @@
       color: #BCBCBC;
       color: rgba(255, 255, 255,.6);
       text-shadow: 0px 1px 2px rgba(0, 0, 0, .7); 
-    }  
-    </style>
+    }
 
+    /* Modal styling */
+
+   .modal {
+    display:none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+
+    html {
+      overflow-y: scroll;
+
+    }
+
+    body {
+      background: #c1bdba;
+      font-family: 'Titillium Web', sans-serif;
+
+    }
+
+    a {
+      text-decoration: none;
+      color: #1ab188;
+      -webkit-transition: .5s ease;
+      transition: .5s ease;
+    }
+    a:hover {
+      color: #179b77;
+    }
+
+    .form {
+      background: rgba(19, 35, 47, 0.9);
+      padding: 40px;
+      max-width: 600px;
+      margin: 40px auto;
+      border-radius: 4px;
+      box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    }
+
+    .tab-group {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 40px 0;
+    }
+    .tab-group:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .tab-group li a {
+      display: block;
+      text-decoration: none;
+      padding: 15px;
+      background: rgba(160, 179, 176, 0.25);
+      color: #a0b3b0;
+      font-size: 20px;
+      float: left;
+      width: 50%;
+      text-align: center;
+      cursor: pointer;
+      -webkit-transition: .5s ease;
+      transition: .5s ease;
+    }
+    .tab-group li a:hover {
+      background: #179b77;
+      color: #ffffff;
+    }
+    .tab-group .active a {
+      background: #1ab188;
+      color: #ffffff;
+    }
+
+    .tab-content > div:last-child {
+      display: none;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      font-weight: 300;
+      margin: 0 0 40px;
+    }
+
+    label {
+      position: absolute;
+      -webkit-transform: translateY(6px);
+              transform: translateY(6px);
+      left: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      -webkit-transition: all 0.25s ease;
+      transition: all 0.25s ease;
+      -webkit-backface-visibility: hidden;
+      pointer-events: none;
+      font-size: 22px;
+    }
+    label .req {
+      margin: 2px;
+      color: #1ab188;
+    }
+
+    label.active {
+      -webkit-transform: translateY(50px);
+              transform: translateY(50px);
+      left: 2px;
+      font-size: 14px;
+    }
+    label.active .req {
+      opacity: 0;
+    }
+
+    label.highlight {
+      color: #ffffff;
+    }
+
+    input, textarea {
+      font-size: 22px;
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 5px 10px;
+      background: none;
+      background-image: none;
+      border: 1px solid #a0b3b0;
+      color: #ffffff;
+      border-radius: 0;
+      -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+      transition: border-color .25s ease, box-shadow .25s ease;
+    }
+    input:focus, textarea:focus {
+      outline: 0;
+      border-color: #1ab188;
+    }
+
+    textarea {
+      border: 2px solid #a0b3b0;
+      resize: vertical;
+    }
+
+    .field-wrap {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .top-row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .top-row > div {
+      float: left;
+      width: 48%;
+      margin-right: 4%;
+    }
+    .top-row > div:last-child {
+      margin: 0;
+    }
+
+    .button {
+      border: 0;
+      outline: none;
+      border-radius: 0;
+      padding: 15px 0;
+      font-size: 2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      background: #1ab188;
+      color: #ffffff;
+      -webkit-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+      -webkit-appearance: none;
+    }
+    .button:hover, .button:focus {
+      background: #179b77;
+    }
+
+    .button-block {
+      display: block;
+      width: 100%;
+    }
+
+    .forgot {
+      margin-top: -20px;
+      text-align: right;
+    }
+  
+    </style>
+    <script type="text/javascript">
+               // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script type="text/javascript">
+    $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+  
+  var $this = $(this),
+      label = $this.prev('label');
+
+      if (e.type === 'keyup') {
+            if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.addClass('active highlight');
+        }
+    } else if (e.type === 'blur') {
+        if( $this.val() === '' ) {
+            label.removeClass('active highlight'); 
+            } else {
+            label.removeClass('highlight');   
+            }   
+    } else if (e.type === 'focus') {
+      
+      if( $this.val() === '' ) {
+            label.removeClass('highlight'); 
+            } 
+      else if( $this.val() !== '' ) {
+            label.addClass('highlight');
+            }
+    }
+
+});
+
+$('.tab a').on('click', function (e) {
+  
+  e.preventDefault();
+  
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+  
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+  
+  $(target).fadeIn(600);
+  
+});
+</script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -240,8 +520,94 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Apply for KWoC</h2>
                     <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-                    <a target="_blank" href="https://goo.gl/forms/R3G6x30AxfVxatQD3" class="btn btn-default btn-lg">HOST YOUR PROJECT</a>
                     <a target="_blank" href="https://goo.gl/forms/tcxptt9Jk7x691YF2" class="btn btn-default btn-lg">REGISTER AS STUDENT</a>
+                    <button id = "myBtn" class = "btn btn-default btn-lg">FSFS</button>
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                      <div class="form">
+                          <span class="close">×</span>
+                          <ul class="tab-group">
+                            <li class="tab active"><a href="#signup">Sign Up</a></li>
+                            <li class="tab"><a href="#login">Log In</a></li>
+                          </ul>
+                          
+                          <div class="tab-content">
+                            <div id="signup">   
+                              <h1>Sign Up for Free</h1>
+                              
+                              <form action="/" method="post">
+                              
+                              <div class="top-row">
+                                <div class="field-wrap">
+                                  <label>
+                                    First Name<span class="req">*</span>
+                                  </label>
+                                  <input type="text" required autocomplete="off" />
+                                </div>
+                            
+                                <div class="field-wrap">
+                                  <label>
+                                    Last Name<span class="req">*</span>
+                                  </label>
+                                  <input type="text"required autocomplete="off"/>
+                                </div>
+                              </div>
+
+                              <div class="field-wrap">
+                                <label>
+                                  Email Address<span class="req">*</span>
+                                </label>
+                                <input type="email"required autocomplete="off"/>
+                              </div>
+                              
+                              <div class="field-wrap">
+                                <label>
+                                  Set A Password<span class="req">*</span>
+                                </label>
+                                <input type="password"required autocomplete="off"/>
+                              </div>
+                              
+                              <button type="submit" class="button button-block"/>Get Started</button>
+                              
+                              </form>
+
+                            </div>
+                            
+                            <div id="login">   
+                              <h1>Welcome Back!</h1>
+                              
+                              <form action="/" method="post">
+                              
+                                <div class="field-wrap">
+                                <label>
+                                  Email Address<span class="req">*</span>
+                                </label>
+                                <input type="email"required autocomplete="off"/>
+                              </div>
+                              
+                              <div class="field-wrap">
+                                <label>
+                                  Password<span class="req">*</span>
+                                </label>
+                                <input type="password"required autocomplete="off"/>
+                              </div>
+                              
+                              <p class="forgot"><a href="#">Forgot Password?</a></p>
+                              
+                              <button class="button button-block"/>Log In</button>
+                              
+                              </form>
+
+                            </div>
+                            
+                          </div><!-- tab-content -->
+                          
+                    </div> <!-- /form -->
+
+                </div>
+
+                    <a target="_blank" href="https://goo.gl/forms/tcxptt9Jk7x691YF2" class="btn btn-default btn-lg">HOST YOUR PROJECT</a>
                 </div>
             </div>
         </div>
@@ -269,7 +635,115 @@
             </div>
         </div>
     </section>
+    <!--Form division-->
+    <div class="form" id="formid">
+          
+          <ul class="tab-group">
+            <li class="tab active"><a href="#student">Register as Student</a></li>
+            <li class="tab"><a href="#project">Register your project</a></li>
+          </ul>
+          
+          <div class="tab-content">
+            <div id="student">   
+              <h1>Sign Up for Free</h1>
+              
+              <form action="/" method="post">
+              
+              <div class="top-row">
+                <div class="field-wrap">
+                  <label>
+                    First Name<span class="req">*</span>
+                  </label>
+                  <input type="text" required autocomplete="off" />
+                </div>
+            
+                <div class="field-wrap">
+                  <label>
+                    Last Name<span class="req">*</span>
+                  </label>
+                  <input type="text"required autocomplete="off"/>
+                </div>
+              </div>
 
+              <div class="field-wrap">
+                <label>
+                  Roll number<span class="req">*</span>
+                </label>
+                <input type="rollno"required autocomplete="off"/>
+              </div>
+
+              <div class="field-wrap">
+                <label>
+                  Email Address<span class="req">*</span>
+                </label>
+                <input type="email"required autocomplete="off"/>
+              </div>
+              
+            <div class="field-wrap">
+                <label>
+                 Github handle<span class="req">*</span>
+                </label>
+                <input type="github"required autocomplete="off"/>
+              </div>
+              
+              <button type="submit" class="button button-block"/>Submit</button>
+              
+              </form>
+
+            </div>
+            
+            <div id="project">   
+              <h1>Host your project!</h1>
+              
+              <form action="/" method="post">
+              
+                <div class="top-row">
+                <div class="field-wrap">
+                  <label>
+                    First Name<span class="req">*</span>
+                  </label>
+                  <input type="text" required autocomplete="off" />
+                </div>
+            
+                <div class="field-wrap">
+                  <label>
+                    Last Name<span class="req">*</span>
+                  </label>
+                  <input type="text"required autocomplete="off"/>
+                </div>
+              </div>
+
+              <div class="field-wrap">
+                <label>
+                 Project name<span class="req">*</span>
+                </label>
+                <input type="rollno"required autocomplete="off"/>
+              </div>
+
+              <div class="field-wrap">
+                <label>
+                  Email Address<span class="req">*</span>
+                </label>
+                <input type="email"required autocomplete="off"/>
+              </div>
+              
+            <div class="field-wrap">
+                <label>
+                 Project link<span class="req">*</span>
+                </label>
+                <input type="github"required autocomplete="off"/>
+              </div>
+              
+              <button type="submit" class="button button-block"/>Submit</button>
+              
+              
+              </form>
+
+            </div>
+            
+          </div>
+          
+    </div> <!--/form --> 
     <!-- Map Section -->
     <div id="map"></div>
 
@@ -294,7 +768,11 @@
 
     <!-- Theme JavaScript -->
     <script src="/static/js/grayscale.min.js"></script>
-    <script type="text/javascript" src="/static/js/file.js" ></script>
+    <!-- Timer -->
+    <script type="text/javascript" src="/static/js/timer.js" ></script>
+    <!-- Popup Submit form -->
+    <script type="text/javascript" src="/static/js/jquery.leanModal.min.js"></script>
+
 
 </body>
 
