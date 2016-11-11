@@ -312,3 +312,58 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
 }
+/* Main 
+------------------------------------------------------------------ */
+/*#main {
+  margin: 126px auto 0;
+  text-align: center; 
+}
+#main h1 {
+  font: 42px/1.2em 'montserrat-bold', sans-serif; 
+  color: #fff;
+  margin-bottom: 18px;  
+  padding: 0 10%;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, .5); 
+}
+#main p { 
+  font: 16px/33px 'montserrat-regular', sans-serif;
+  color: #fff;
+  margin-bottom: 18px;
+  padding: 0 18%;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, .7);
+}
+#main h5 {
+  font: 13px/24px 'montserrat-bold', sans-serif;
+  color: #1F782F;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, .7); 
+} */
+
+/* counter */
+.intro #counter {
+  width: 75%;
+  color: #fff;
+  text-align: center;
+  margin: 18px auto 0;
+}
+.intro #counter span {
+  font: 70px/1em 'merriweather-bold', serif;
+  display: block;
+  padding: 12px 0 30px;
+  min-width: 25%;
+  float: left;  
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, .5); 
+  border-left: 1px dotted rgba(255, 255, 255, .2);  
+}
+.intro #counter span:first-child { border-left: none; }
+.intro #counter span em {
+  font: 11px/18px 'montserrat-regular', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 12px; 
+  display: block;
+  color: #BCBCBC;
+  color: rgba(255, 255, 255,.6);
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, .7); 
+}  
