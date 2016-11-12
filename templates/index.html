@@ -606,8 +606,8 @@ $('.tab a').on('click', function (e) {
     <div class="form" id="formid">
           
           <ul class="tab-group">
-            <li class="tab active" id="li_student"><a href="#student" onclick=link_student()>Register as Student </a></li>
-            <li class="tab" id="li_project"><a href="#project" onclick=link_project()>Register your project </a></li>
+            <li class="tab active" id="li_student"><a href="#li_student" onclick=link_student()>Register as Student </a></li>
+            <li class="tab" id="li_project"><a href="#li_project" onclick=link_project()>Register your project </a></li>
           </ul>
           
           <!-- <div class="tab-content"> -->
@@ -618,41 +618,25 @@ $('.tab a').on('click', function (e) {
               
               <div class="top-row">
                 <div class="field-wrap">
-                  <label>
-                    First Name<span class="req">*</span>
-                  </label>
-                  <input type="text" name="fname" id="fname" autocomplete="off" required>
+                  <input type="text" name="fname" id="fname" placeholder="First Name" autocomplete="off" required>
                 </div>
             
                 <div class="field-wrap">
-                  <label>
-                    Last Name<span class="req">*</span>
-                  </label>
-                  <input type="text" name="lname" id="lname" autocomplete="off" required>
+                  <input type="text" name="lname" id="lname" placeholder="Last Name" autocomplete="off" required>
                 </div>
               </div>
 
               <div class="field-wrap">
-                <label>
-                  Roll number<span class="req">*</span>
-                </label>
-                <input type="rollno" name="rollno" id="rollno" autocomplete="off" required>
+                <input type="rollno" name="rollno" id="rollno" placeholder="Roll number" autocomplete="off" required>
               </div>
 
               <div class="field-wrap">
-                <label>
-                  Email Address<span class="req">*</span>
-                </label>
-                <input type="email"  name="emailid" id="emailid" autocomplete="off" required>
+                <input type="email"  name="emailid" id="emailid" placeholder="Email Address" autocomplete="off" required>
               </div>
               
             <div class="field-wrap">
-                <label>
-                 Github handle<span class="req">*</span>
-                </label>
-                <input type="github"  name="githubhandle" id="githubhandle" autocomplete="off" required>
+                <input type="github"  name="githubhandle" id="githubhandle" placeholder="Github handle" autocomplete="off" required>
               </div>
-              
               <input type="submit" class="button button-block" value="Submit">
               </form>
 
@@ -665,39 +649,24 @@ $('.tab a').on('click', function (e) {
               
                 <div class="top-row">
                 <div class="field-wrap">
-                  <label>
-                    First Name<span class="req">*</span>
-                  </label>
-                  <input type="text"  name="fname" id="fname" autocomplete="off" required>
+                  <input type="text"  name="fname" id="fname" placeholder="First Name" autocomplete="off" required>
                 </div>
             
                 <div class="field-wrap">
-                  <label>
-                    Last Name<span class="req">*</span>
-                  </label>
-                  <input type="text" name="lname" id="lname" autocomplete="off" required>
+                  <input type="text" name="lname" id="lname" placeholder="Last Name" autocomplete="off" required>
                 </div>
               </div>
 
               <div class="field-wrap">
-                <label>
-                 Project name<span class="req">*</span>
-                </label>
-                <input type="rollno" name="pname" id="pname"autocomplete="off" required>
+                <input type="rollno" name="pname" id="pname" placeholder="Project name" autocomplete="off" required>
               </div>
 
               <div class="field-wrap">
-                <label>
-                  Email Address<span class="req">*</span>
-                </label>
-                <input type="email" name="emailid" id = "emailid" autocomplete="off" required>
+                <input type="email" name="emailid" id = "emailid" placeholder="Email Address" autocomplete="off" required>
               </div>
               
             <div class="field-wrap">
-                <label>
-                 Project link<span class="req">*</span>
-                </label>
-                <input type="github" name="plink" id="plink" autocomplete="off" required>
+                <input type="github" name="plink" id="plink" placeholder="Project link" autocomplete="off" required>
               </div>
               
               <input type="submit" class="button button-block" value="Submit">
