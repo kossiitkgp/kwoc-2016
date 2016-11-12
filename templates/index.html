@@ -857,7 +857,7 @@ $('.tab a').on('click', function (e) {
 
             </div>
             
-            <div id="project">   
+            <div id="project" style ="display:none;">   
               <h1>Host your project!</h1>
               
               <form action="/project-register" method="post">
@@ -954,13 +954,13 @@ $('.tab a').on('click', function (e) {
 
 <script>
 function hidestudent() {
-    document.getElementById("student").style.visibility = "hidden";
-    document.getElementById("project").style.visibility = "visible";
+    document.getElementById("student").style.display = "none";
+    document.getElementById("project").style.display = "block";
 }
 
 function hideproject() {
-    document.getElementById("project").style.visibility = "hidden";
-    document.getElementById("student").style.visibility = "visible";
+    document.getElementById("project").style.display = "none";
+    document.getElementById("student").style.display = "block";
 }
 </script>
 </body>
