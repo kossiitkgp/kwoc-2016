@@ -4,6 +4,8 @@ import os
 import psycopg2
 import urlparse
 import traceback
+import json
+import requests
 
 app = Flask(__name__)
 sess=Session()
@@ -35,11 +37,16 @@ def student_register():
 			cursor.execute(query)
 			conn.commit()
 			return render_template('index.html' , flag="True" ,msg="You have been successfully registered.")
-		except :
+		except psycopg2.IntegrityError:
 			conn.rollback()
-			print traceback.format_exc()
-			return render_template('index.html' , flag="True" ,msg="Registration Failed !.")
-
+			error_msg = "{}\n\nForm : {}".format(traceback.format_exc(),form_dict)
+			slack_notification(error_msg)
+			return render_template('index.html' , flag="True" ,msg="Registration Failed ! User already registered")
+		except : 
+			conn.rollback()
+			error_msg = "{}\n\nForm : {}".format(traceback.format_exc(),form_dict)
+			slack_notification(error_msg)
+			return render_template('index.html' , flag="True" ,msg="Registration Failed !")
 @app.route("/project-register" , methods=['GET','POST'])
 def project_register():
 	flag = None
@@ -55,10 +62,16 @@ def project_register():
 			cursor.execute(query)
 			conn.commit()
 			return render_template('index.html',flag = "True" , msg="Your project has been successfully registered.")
-		except :
+		except psycopg2.IntegrityError:
 			conn.rollback()
-			print traceback.format_exc()
-			return render_template('index.html' , flag="True" ,msg="Registration Failed !.")
+			error_msg = "{}\n\nForm : {}".format(traceback.format_exc(),form_dict)
+			slack_notification(error_msg)
+			return render_template('index.html' , flag="True" ,msg="Registration Failed ! Project already exists")
+		except : 
+			conn.rollback()
+			error_msg = "{}\n\nForm : {}".format(traceback.format_exc(),form_dict)
+			slack_notification(error_msg)
+			return render_template('index.html' , flag="True" ,msg="Registration Failed !")
 
 
 @app.route("/")
@@ -70,7 +83,19 @@ def index():
 	return render_template('index.html')
 
 # if __name__ == "__main__":
+def slack_notification(message):
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = json.dumps({
+        "text": "In KWOC Website following error occured :\n{}".format(message)
+    })
+    r = requests.post(
+        os.environ["SLACK_WEBHOOK_URL"], headers=headers, data=data)
 
+    if r.status_code != 200:
+        print("in slack_notification : {}".format(r.status_code))
+        print(r.text)
 app.secret_key = 'kwoc'
 app.config['SESSION_TYPE'] = 'filesystem'
 
