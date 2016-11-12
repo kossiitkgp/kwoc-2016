@@ -34,11 +34,11 @@ def student_register():
 		try :
 			cursor.execute(query)
 			conn.commit()
-			return render_template('index.html' , flag="Success")
+			return render_template('index.html' , flag="True" ,msg="You have been successfully registered.")
 		except :
 			conn.rollback()
 			print traceback.format_exc()
-			return "Addition failed"
+			return render_template('index.html' , flag="True" ,msg="Registration Failed !.")
 
 @app.route("/project-register" , methods=['GET','POST'])
 def project_register():
@@ -54,11 +54,11 @@ def project_register():
 		try :
 			cursor.execute(query)
 			conn.commit()
-			return render_template('index.html',flag = "Success")
+			return render_template('index.html',flag = "True" , msg="Your project has been successfully registered.")
 		except :
 			conn.rollback()
 			print traceback.format_exc()
-			return "Addition failed"
+			return render_template('index.html' , flag="True" ,msg="Registration Failed !.")
 
 
 @app.route("/")
