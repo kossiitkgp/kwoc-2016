@@ -2,3 +2,5 @@ requests
 Flask-Session
 flask
 gunicorn
+psycopg2==2.6.2
+

@@ -29,7 +29,377 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!--Styling countdown timer -->
+    <style type="text/css">
+    #counter {
+      width: 75%;
+      color: #fff;
+      text-align: center;
+      margin: 18px auto 0;
+    }
+    #counter span {
+      font: 70px/1em 'merriweather-bold', serif;
+      display: block;
+      padding: 12px 0 30px;
+      min-width: 25%;
+      float: left;  
+      text-shadow: 0px 1px 3px rgba(0, 0, 0, .5); 
+      border-left: 1px dotted rgba(255, 255, 255, .2);  
+    }
+    #counter span:first-child { border-left: none; }
+    #counter span em {
+      font: 11px/18px 'montserrat-regular', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 12px; 
+      display: block;
+      color: #BCBCBC;
+      color: rgba(255, 255, 255,.6);
+      text-shadow: 0px 1px 2px rgba(0, 0, 0, .7); 
+    }
 
+    /* Modal styling */
+
+   .modal {
+    display:none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+<<<<<<< HEAD
+    }
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+
+    html {
+      overflow-y: scroll;
+
+    }
+
+    body {
+      background: #c1bdba;
+      font-family: 'Titillium Web', sans-serif;
+
+    }
+
+    a {
+      text-decoration: none;
+      color: #1ab188;
+      -webkit-transition: .5s ease;
+      transition: .5s ease;
+    }
+    a:hover {
+      color: #179b77;
+    }
+
+    .form {
+      background: rgba(19, 35, 47, 0.9);
+      padding: 40px;
+      max-width: 600px;
+      margin: 40px auto;
+      border-radius: 4px;
+      box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    }
+
+    .tab-group {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 40px 0;
+    }
+    .tab-group:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .tab-group li a {
+      display: block;
+      text-decoration: none;
+      padding: 15px;
+      background: rgba(160, 179, 176, 0.25);
+      color: #a0b3b0;
+      font-size: 20px;
+      float: left;
+      width: 50%;
+      text-align: center;
+      cursor: pointer;
+      -webkit-transition: .5s ease;
+      transition: .5s ease;
+    }
+    .tab-group li a:hover {
+      background: #179b77;
+      color: #ffffff;
+    }
+    .tab-group .active a {
+      background: #1ab188;
+      color: #ffffff;
+    }
+
+    .tab-content > div:last-child {
+      display: none;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      font-weight: 300;
+      margin: 0 0 40px;
+    }
+
+    label {
+      position: absolute;
+      -webkit-transform: translateY(6px);
+              transform: translateY(6px);
+      left: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      -webkit-transition: all 0.25s ease;
+      transition: all 0.25s ease;
+      -webkit-backface-visibility: hidden;
+      pointer-events: none;
+      font-size: 22px;
+    }
+    label .req {
+      margin: 2px;
+      color: #1ab188;
+    }
+
+    label.active {
+      -webkit-transform: translateY(50px);
+              transform: translateY(50px);
+      left: 2px;
+      font-size: 14px;
+    }
+    label.active .req {
+      opacity: 0;
+    }
+
+    label.highlight {
+      color: #ffffff;
+    }
+
+    input, textarea {
+      font-size: 22px;
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 5px 10px;
+      background: none;
+      background-image: none;
+      border: 1px solid #a0b3b0;
+      color: #ffffff;
+      border-radius: 0;
+      -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+      transition: border-color .25s ease, box-shadow .25s ease;
+    }
+    input:focus, textarea:focus {
+      outline: 0;
+      border-color: #1ab188;
+    }
+
+    textarea {
+      border: 2px solid #a0b3b0;
+      resize: vertical;
+    }
+
+    .field-wrap {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .top-row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .top-row > div {
+      float: left;
+      width: 48%;
+      margin-right: 4%;
+    }
+    .top-row > div:last-child {
+      margin: 0;
+    }
+
+    .button {
+      border: 0;
+      outline: none;
+      border-radius: 0;
+      padding: 15px 0;
+      font-size: 2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      background: #1ab188;
+      color: #ffffff;
+      -webkit-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+      -webkit-appearance: none;
+    }
+    .button:hover, .button:focus {
+      background: #179b77;
+    }
+
+    .button-block {
+      display: block;
+      width: 100%;
+    }
+
+    .forgot {
+      margin-top: -20px;
+      text-align: right;
+    }
+/* for footer*/
+    .social {
+      position: relative;
+      width: 100%;
+      top: 94%;
+      text-align: center;
+      transform: translateY(-50%);
+  
+    }
+
+    .social .link {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px dashed white;
+      background-clip: content-box;
+      padding: 10px;
+      transition: .5s;
+      color: #D7D0BE;
+      margin-left: 15px;
+      margin-right: 15px;
+      text-shadow:
+       0 -1px 0 rgba(0, 0, 0, 0.2),
+       0 1px 0 rgba(255, 255, 255, 0.2);
+      font-size: 70px;
+    }
+
+    .social .link span {
+      display: block;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .social .link:hover {
+      padding: 20px;
+      color: white;
+      margin-left: -5px;
+      transform: translateX(10px) rotate(360deg);
+    }
+
+    .social .link.google-plus {
+      background-color: tomato;
+      color: white;
+    }
+
+    .social .link.twitter {
+       background-color: #00ACEE;
+       color: white;
+    }
+
+    .social .link.facebook {
+       background-color: #3B5998;
+       color: white;
+    }
+  
+    </style>
+    <script type="text/javascript">
+               // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script type="text/javascript">
+    $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+  
+  var $this = $(this),
+      label = $this.prev('label');
+
+      if (e.type === 'keyup') {
+            if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.addClass('active highlight');
+        }
+    } else if (e.type === 'blur') {
+        if( $this.val() === '' ) {
+            label.removeClass('active highlight'); 
+            } else {
+            label.removeClass('highlight');   
+            }   
+    } else if (e.type === 'focus') {
+      
+      if( $this.val() === '' ) {
+            label.removeClass('highlight'); 
+            } 
+      else if( $this.val() !== '' ) {
+            label.addClass('highlight');
+            }
+    }
+
+});
+
+$('.tab a').on('click', function (e) {
+  
+  e.preventDefault();
+  
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+  
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+  
+  $(target).fadeIn(600);
+  
+});
+</script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -84,22 +454,28 @@
                         <a href="#about" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
-                        <h5>Time Left Until Launching</h5>
+                        <h3><br>GOES LIVE IN</h3>
 
                                      
 
                     </div>
                 </div>
                 <div id="counter" class="cf">
-                            <span>134 <em>days</em></span> 
-                            <span>12 <em>hours</em></span>
-                            <span>50 <em>minutes</em></span>
-                            <span>33 <em>seconds</em></span> 
+                            <span class ="days"> <em>days</em></span> 
+                            <span class ="hours" <em>hours</em></span>
+                            <span class ="minutes" <em>minutes</em></span>
+                            <span class ="seconds" <em>seconds</em></span> 
                         </div>     
             </div>
         </div>
     </header>
-
+      {% if flag %}
+      <script type="text/javascript">
+      console.log("In if")
+        alert('{{msg}}');
+        window.location.href="/";
+      </script>
+      {% endif %}
     <!-- About Section -->
     <section id="about" class="container content-section text-center">
         <div class="row">
@@ -204,20 +580,6 @@
 </div>
         </div>
     </section>
-    <!-- Download Section -->
-    <section id="apply" class="content-section text-center">
-        <div class="download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Apply for KWoC</h2>
-                    <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-                    <a target="_blank" href="https://goo.gl/forms/R3G6x30AxfVxatQD3" class="btn btn-default btn-lg">HOST YOUR PROJECT</a>
-                    <a target="_blank" href="https://goo.gl/forms/tcxptt9Jk7x691YF2" class="btn btn-default btn-lg">REGISTER AS STUDENT</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="container content-section text-center">
         <div class="row">
@@ -240,32 +602,168 @@
             </div>
         </div>
     </section>
+    <!--Form division-->
+    <div class="form" id="formid">
+          
+          <ul class="tab-group">
+            <li class="tab active"><a href="#student" onclick=hideproject()>Register as Student </a></li>
+            <li class="tab"><a href="#project" onclick=hidestudent()>Register your project </a></li>
+          </ul>
+          
+          <!-- <div class="tab-content"> -->
+            <div id="student">   
+              <h1>Sign Up for Free</h1>
+              
+              <form action="/student-register" method="post">
+              
+              <div class="top-row">
+                <div class="field-wrap">
+                  <label>
+                    First Name<span class="req">*</span>
+                  </label>
+                  <input type="text" name="fname" id="fname" autocomplete="off" required>
+                </div>
+            
+                <div class="field-wrap">
+                  <label>
+                    Last Name<span class="req">*</span>
+                  </label>
+                  <input type="text" name="lname" id="lname" autocomplete="off" required>
+                </div>
+              </div>
 
+              <div class="field-wrap">
+                <label>
+                  Roll number<span class="req">*</span>
+                </label>
+                <input type="rollno" name="rollno" id="rollno" autocomplete="off" required>
+              </div>
+
+              <div class="field-wrap">
+                <label>
+                  Email Address<span class="req">*</span>
+                </label>
+                <input type="email"  name="emailid" id="emailid" autocomplete="off" required>
+              </div>
+              
+            <div class="field-wrap">
+                <label>
+                 Github handle<span class="req">*</span>
+                </label>
+                <input type="github"  name="githubhandle" id="githubhandle" autocomplete="off" required>
+              </div>
+              
+              <input type="submit" class="button button-block" value="Submit">
+              </form>
+
+            </div>
+            
+            <div id="project" style ="display:none;">   
+              <h1>Host your project!</h1>
+              
+              <form action="/project-register" method="post">
+              
+                <div class="top-row">
+                <div class="field-wrap">
+                  <label>
+                    First Name<span class="req">*</span>
+                  </label>
+                  <input type="text"  name="fname" id="fname" autocomplete="off" required>
+                </div>
+            
+                <div class="field-wrap">
+                  <label>
+                    Last Name<span class="req">*</span>
+                  </label>
+                  <input type="text" name="lname" id="lname" autocomplete="off" required>
+                </div>
+              </div>
+
+              <div class="field-wrap">
+                <label>
+                 Project name<span class="req">*</span>
+                </label>
+                <input type="rollno" name="pname" id="pname"autocomplete="off" required>
+              </div>
+
+              <div class="field-wrap">
+                <label>
+                  Email Address<span class="req">*</span>
+                </label>
+                <input type="email" name="emailid" id = "emailid" autocomplete="off" required>
+              </div>
+              
+            <div class="field-wrap">
+                <label>
+                 Project link<span class="req">*</span>
+                </label>
+                <input type="github" name="plink" id="plink" autocomplete="off" required>
+              </div>
+              
+              <input type="submit" class="button button-block" value="Submit">
+              
+              
+              </form>
+
+            </div>
+            
+          </div>
+          
+    </div> <!--/form --> 
     <!-- Map Section -->
-    <div id="map"></div>
+
+
 
     <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p>Copyright &copy; Your Website 2016</p>
+
+            <div class="social">
+  		<a href="https://www.facebook.com/kossiitkgp/?fref=ts" class="link facebook" target="_parent"><img src="/static/fb.png" style ="postion:absolute; width:100px;"></a>
+
+  		<a href="https://github.com/kossiitkgp" class="link twitter" target="_parent"><img src = "/static/git.png" style = "position:relative; left:1%; border-radius:50%;  width:100px; height:100px;"></span></a>
+<!-- 
+  		<a href="https://plus.google.com/+OndřejBárta-Otaku" class="link google-plus" target="_parent"><img src = ""></span></a> -->
+	    </div>
+
+            <p>Copyright &copy; Your KOSS 2016</p>
+
         </div>
     </footer>
+    
 
     <!-- jQuery -->
     <script src="/static/vendor/jquery/jquery.js"></script>
 
+
     <!-- Bootstrap Core JavaScript -->
     <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-
+  
     <!-- Theme JavaScript -->
     <script src="/static/js/grayscale.min.js"></script>
 
+    <!-- Timer -->
+
+    <script type="text/javascript" src="/static/js/timer.js" ></script>
+    <!-- Popup Submit form -->
+    
+    <script type="text/javascript" src="/static/js/jquery.leanModal.min.js"></script>
+    
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+function hidestudent() {
+    document.getElementById("student").style.display = "none";
+    document.getElementById("project").style.display = "block";
+}
+
+function hideproject() {
+    document.getElementById("project").style.display = "none";
+    document.getElementById("student").style.display = "block";
+}
+</script>
 </body>
 
 </html>
