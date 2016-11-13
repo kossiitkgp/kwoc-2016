@@ -726,13 +726,15 @@ $('.tab a').on('click', function (e) {
 function link_student() {
     document.getElementById("li_student").className = "tab active";
     document.getElementById("li_project").className = "tab";
-    // document.getElementById("project").style.display = "block";
+    document.getElementById("student").style.display = "block";
+    document.getElementById("project").style.display = "none";
 }
 
 function link_project() {
     document.getElementById("li_project").className = "tab active";
     document.getElementById("li_student").className = "tab";
-    // document.getElementById("student").style.display = "block";
+    document.getElementById("project").style.display = "block";
+    document.getElementById("student").style.display = "none";
 }
 </script>
 </body>
