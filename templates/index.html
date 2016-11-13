@@ -429,7 +429,7 @@ $('.tab a').on('click', function (e) {
                         <a class="page-scroll" href="#timeline">Timeline</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#apply">Apply</a>
+                        <a class="page-scroll" href="#formid">Apply</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -488,6 +488,17 @@ $('.tab a').on('click', function (e) {
     </section>
     <!-- Timeline Section -->
     <section id="timeline" class="container content-section text-center">
+    <header class="intro" style="background: none;">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Timeline</h1>           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
         <div class="row">
             <div id="timeline">
     <!-- Timeline Item, copy from here to create various boxes -->
@@ -579,28 +590,6 @@ $('.tab a').on('click', function (e) {
 </div>
         </div>
     </section>
-    <!-- Contact Section -->
-    <section id="contact" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Start Bootstrap</h2>
-                <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
-                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
-                </p>
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
     <!--Form division-->
     <div class="form" id="formid">
           
@@ -684,7 +673,7 @@ $('.tab a').on('click', function (e) {
 
     <!-- Footer -->
     <footer>
-        <div class="container text-center">
+        <div class="container text-center" id ="contact">
 
             <div class="social">
   		<a href="https://www.facebook.com/kossiitkgp/?fref=ts" class="link facebook" target="_parent"><img src="/static/img/fb.png" style ="postion:absolute; width:100px;"></a>
@@ -747,6 +736,7 @@ snowStorm.flakesMaxActive = 96;  // show more snow on screen at once
 snowStorm.useTwinkleEffect = true; // let the snow flicker in and out of view
 snowStorm.freezeOnBlur = false;
 </script>
+<script type="text/javascript" src="/static/js/smoothscroll.js"></script>
 </body>
 
 </html>
