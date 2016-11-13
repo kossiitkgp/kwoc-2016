@@ -10,16 +10,16 @@ import requests
 app = Flask(__name__)
 sess=Session()
 urlparse.uses_netloc.append("postgres")
-url = urlparse.urlparse(os.environ["DATABASE_URL"])
+#url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
-conn = psycopg2.connect(
+'''conn = psycopg2.connect(
 	database=url.path[1:],
 	user=url.username,
 	password=url.password,
 	host=url.hostname,
 	port=url.port
 )
-cursor = conn.cursor()
+cursor = conn.cursor()'''
 app = Flask(__name__)
 sess=Session()
 
