@@ -41,20 +41,20 @@
       display: block;
       padding: 12px 0 30px;
       min-width: 25%;
-      float: left;  
-      text-shadow: 0px 1px 3px rgba(0, 0, 0, .5); 
-      border-left: 1px dotted rgba(255, 255, 255, .2);  
+      float: left;
+      text-shadow: 0px 1px 3px rgba(0, 0, 0, .5);
+      border-left: 1px dotted rgba(255, 255, 255, .2);
     }
     #counter span:first-child { border-left: none; }
     #counter span em {
       font: 11px/18px 'montserrat-regular', sans-serif;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      margin-top: 50x; 
+      margin-top: 50x;
       display: block;
       color: #BCBCBC;
       color: rgba(255, 255, 255,.6);
-      text-shadow: 0px 1px 2px rgba(0, 0, 0, .7); 
+      text-shadow: 0px 1px 2px rgba(0, 0, 0, .7);
     }
 
     /* Modal styling */
@@ -272,7 +272,7 @@
       top: 94%;
       text-align: center;
       transform: translateY(-50%);
-  
+
     }
 
     .social .link {
@@ -325,7 +325,7 @@
        background-color: #3B5998;
        color: white;
     }
-  
+
     </style>
     <script type="text/javascript">
                // Get the modal
@@ -356,7 +356,7 @@
     </script>
     <script type="text/javascript">
     $('.form').find('input, textarea').on('keyup blur focus', function (e) {
-  
+
   var $this = $(this),
       label = $this.prev('label');
 
@@ -368,15 +368,15 @@
         }
     } else if (e.type === 'blur') {
         if( $this.val() === '' ) {
-            label.removeClass('active highlight'); 
+            label.removeClass('active highlight');
             } else {
-            label.removeClass('highlight');   
-            }   
+            label.removeClass('highlight');
+            }
     } else if (e.type === 'focus') {
-      
+
       if( $this.val() === '' ) {
-            label.removeClass('highlight'); 
-            } 
+            label.removeClass('highlight');
+            }
       else if( $this.val() !== '' ) {
             label.addClass('highlight');
             }
@@ -385,18 +385,18 @@
 });
 
 $('.tab a').on('click', function (e) {
-  
+
   e.preventDefault();
-  
+
   $(this).parent().addClass('active');
   $(this).parent().siblings().removeClass('active');
-  
+
   target = $(this).attr('href');
 
   $('.tab-content > div').not(target).hide();
-  
+
   $(target).fadeIn(600);
-  
+
 });
 </script>
 
@@ -475,7 +475,7 @@ $('.tab a').on('click', function (e) {
                         </a>
                         <h3><br>GOES LIVE IN</h3>
 
-                                     
+
 
                     </div>
                 </div>
@@ -483,8 +483,8 @@ $('.tab a').on('click', function (e) {
                             <span class ="days"> <em>days</em></span>
                             <span class ="hours"> <em>hours</em></span>
                             <span class ="minutes"> <em>minutes</em></span>
-                            <span class ="seconds"> <em>seconds</em></span> 
-                        </div>     
+                            <span class ="seconds"> <em>seconds</em></span>
+                        </div>
             </div>
         </div>
     </header>
@@ -513,7 +513,7 @@ $('.tab a').on('click', function (e) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Timeline</h1>           
+                        <h1 class="brand-heading">Timeline</h1>
                     </div>
                 </div>
             </div>
@@ -531,13 +531,13 @@ $('.tab a').on('click', function (e) {
         <div class="timeline-content right">
             <h2>DECEMBER 1</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Atque, facilis quo maiores magnam modi ab libero praesentium blanditiis.
             </p>
             <!-- <a href="#" class="btn">button</a> -->
         </div>
     </div>
- 
+
     <!-- Timeline Item, copy from here to create various boxes -->
     <div class="timeline-item">
         <!--Icon inside the circle-->
@@ -548,13 +548,13 @@ $('.tab a').on('click', function (e) {
         <div class="timeline-content left">
             <h2>DECEMBER 10</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Atque, facilis quo maiores magnam modi ab libero praesentium blanditiis.
             </p>
             <!-- <a href="#" class="btn">button</a> -->
         </div>
     </div>
- 
+
     <!-- Timeline Item, copy from here to create various boxes -->
     <div class="timeline-item">
         <!--Icon inside the circle-->
@@ -565,7 +565,7 @@ $('.tab a').on('click', function (e) {
         <div class="timeline-content right">
             <h2>DECEMBER 25</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Atque, facilis quo maiores magnam modi ab libero praesentium blanditiis.
             </p>
            <!--  <a href="#" class="btn">button</a> -->
@@ -583,7 +583,7 @@ $('.tab a').on('click', function (e) {
         <div class="timeline-content left">
             <h2>DECEMBER 30</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Atque, facilis quo maiores magnam modi ab libero praesentium blanditiis.
             </p>
            <!--  <a href="#" class="btn">button</a> -->
@@ -601,7 +601,7 @@ $('.tab a').on('click', function (e) {
         <div class="timeline-content right">
             <h2>JANUARY 10</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Atque, facilis quo maiores magnam modi ab libero praesentium blanditiis.
             </p>
          <!--    <a href="#" class="btn">button</a> -->
@@ -612,23 +612,23 @@ $('.tab a').on('click', function (e) {
     </section>
     <!--Form division-->
     <div class="form" id="formid">
-          
+
           <ul class="tab-group">
             <li class="tab active" id="li_student"><a href="#li_student" onclick=link_student()>Register as Student </a></li>
             <li class="tab" id="li_project"><a href="#li_project" onclick=link_project()>Register your project </a></li>
           </ul>
-          
+
           <!-- <div class="tab-content"> -->
-            <div id="student">   
+            <div id="student">
               <h1>Sign Up for Free</h1>
-              
+
               <form action="/student-register" method="post">
-              
+
               <div class="top-row">
                 <div class="field-wrap">
                   <input type="text" name="fname" id="fname" placeholder="First Name" autocomplete="off" required>
                 </div>
-            
+
                 <div class="field-wrap">
                   <input type="text" name="lname" id="lname" placeholder="Last Name" autocomplete="off" required>
                 </div>
@@ -641,7 +641,7 @@ $('.tab a').on('click', function (e) {
               <div class="field-wrap">
                 <input type="email"  name="emailid" id="emailid" placeholder="Email Address" autocomplete="off" required>
               </div>
-              
+
             <div class="field-wrap">
                 <input type="github"  name="githubhandle" id="githubhandle" placeholder="Github handle" autocomplete="off" required>
               </div>
@@ -649,17 +649,17 @@ $('.tab a').on('click', function (e) {
               </form>
 
             </div>
-            
-            <div id="project" style ="display:none;">   
+
+            <div id="project" style ="display:none;">
               <h1>Host your project!</h1>
-              
+
               <form action="/project-register" method="post">
-              
+
                 <div class="top-row">
                 <div class="field-wrap">
                   <input type="text"  name="fname" id="fname" placeholder="First Name" autocomplete="off" required>
                 </div>
-            
+
                 <div class="field-wrap">
                   <input type="text" name="lname" id="lname" placeholder="Last Name" autocomplete="off" required>
                 </div>
@@ -672,21 +672,21 @@ $('.tab a').on('click', function (e) {
               <div class="field-wrap">
                 <input type="email" name="emailid" id = "emailid" placeholder="Email Address" autocomplete="off" required>
               </div>
-              
+
             <div class="field-wrap">
                 <input type="github" name="plink" id="plink" placeholder="Project link" autocomplete="off" required>
               </div>
-              
+
               <input type="submit" class="button button-block" value="Submit">
-              
-              
+
+
               </form>
 
             </div>
-            
+
           </div>
-          
-    </div> <!--/form --> 
+
+    </div> <!--/form -->
     <!-- Map Section -->
 
 
@@ -696,18 +696,18 @@ $('.tab a').on('click', function (e) {
         <div class="container text-center" id ="contact">
 
             <div class="social">
-  		<a href="https://www.facebook.com/kossiitkgp/?fref=ts" class="link facebook" target="_parent"><img src="/static/img/fb.png" style ="postion:absolute; width:100px;"></a>
+  		<a href="https://www.facebook.com/kossiitkgp/?fref=ts" class="link facebook" target="_blank"><img src="/static/img/fb.png" style ="postion:absolute; width:100px;"></a>
 
-  		<a href="https://github.com/kossiitkgp" class="link twitter" target="_parent"><img src = "/static/img/git.png" style = "position:relative; left:1%; border-radius:50%;  width:100px; height:100px;"></span></a>
-<!-- 
+  		<a href="https://github.com/kossiitkgp" class="link twitter" target="_blank"><img src = "/static/img/git.png" style = "position:relative; left:1%; border-radius:50%;  width:100px; height:100px;"></span></a>
+<!--
   		<a href="https://plus.google.com/+OndřejBárta-Otaku" class="link google-plus" target="_parent"><img src = ""></span></a> -->
 	    </div>
 
-            <p>Copyright &copy; Your KOSS 2016</p>
+            <p></> with ♥ by Kharagpur Open Source Society</p>
 
         </div>
     </footer>
-    
+
 
     <!-- jQuery -->
     <script src="/static/vendor/jquery/jquery.js"></script>
@@ -716,7 +716,7 @@ $('.tab a').on('click', function (e) {
     <!-- Bootstrap Core JavaScript -->
     <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-  
+
     <!-- Theme JavaScript -->
     <script src="/static/js/grayscale.min.js"></script>
 
@@ -724,9 +724,9 @@ $('.tab a').on('click', function (e) {
 
     <script type="text/javascript" src="/static/js/timer.js" ></script>
     <!-- Popup Submit form -->
-    
+
     <script type="text/javascript" src="/static/js/jquery.leanModal.min.js"></script>
-    
+
     <!-- Plugin JavaScript -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
