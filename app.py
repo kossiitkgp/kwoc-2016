@@ -2,13 +2,18 @@ from flask import Flask, render_template,url_for,request,session,redirect
 from flask_session import Session
 import os
 import psycopg2
-import urlparse
 import traceback
 import json
 import requests
 
+try:
+	import urlparse
+except Exception as e:
+	from urllib import parse as urlparse
+
 app = Flask(__name__)
 sess=Session()
+
 urlparse.uses_netloc.append("postgres")
 url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
@@ -28,8 +33,8 @@ sess=Session()
 def student_register():
 	flag= None
 	global conn,cursor
-	print "Got request"
-	print request.method
+	print("Got request")
+	print(request.method)
 	if request.method == "POST" :
 		form_dict = request.form.to_dict()
 		query = "INSERT INTO student (f_name,l_name,email_id,roll_no,git_handle) values ('%s','%s','%s','%s','%s') " % (form_dict["fname"],form_dict["lname"],form_dict["emailid"],form_dict["rollno"],form_dict["githubhandle"])
@@ -42,7 +47,7 @@ def student_register():
 			error_msg = "{}\n\nForm : {}".format(traceback.format_exc(),form_dict)
 			slack_notification(error_msg)
 			return render_template('index.html' , flag="True" ,msg="Registration Failed ! User already registered")
-		except : 
+		except :
 			conn.rollback()
 			error_msg = "{}\n\nForm : {}".format(traceback.format_exc(),form_dict)
 			slack_notification(error_msg)
@@ -51,8 +56,8 @@ def student_register():
 def project_register():
 	flag = None
 	global conn,cursor
-	print "Got request"
-	print request.method
+	print("Got request")
+	print(request.method)
 	if request.method == "POST" :
 		form_dict = request.form.to_dict()
 		index = form_dict['plink'].find("github.com/")
@@ -67,7 +72,7 @@ def project_register():
 			error_msg = "{}\n\nForm : {}".format(traceback.format_exc(),form_dict)
 			slack_notification(error_msg)
 			return render_template('index.html' , flag="True" ,msg="Registration Failed ! Project already exists")
-		except : 
+		except :
 			conn.rollback()
 			error_msg = "{}\n\nForm : {}".format(traceback.format_exc(),form_dict)
 			slack_notification(error_msg)
