@@ -160,6 +160,10 @@ header .social .btn {
   -ms-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
+#timeline .timeline-item .timeline-content p {
+  margin-top: 20px;
+  font-family: "Roboto", sans-serif;
+}
 #timeline .timeline-item .timeline-content:before {
   content: '';
   position: absolute;
