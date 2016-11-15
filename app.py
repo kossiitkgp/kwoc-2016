@@ -28,7 +28,6 @@ cursor = conn.cursor()
 app = Flask(__name__)
 sess=Session()
 
-
 @app.route("/student-register" , methods=['GET','POST'])
 def student_register():
 	flag= None
@@ -62,7 +61,7 @@ def project_register():
 		form_dict = request.form.to_dict()
 		index = form_dict['plink'].find("github.com/")
 		phandle = form_dict['plink'][index+11:]
-		query = "INSERT INTO project (f_name,l_name,email_id,project_link,project_name,project_handle) values ('%s','%s','%s','%s','%s','%s') " % (form_dict["fname"],form_dict["lname"],form_dict["emailid"],form_dict["plink"],form_dict["pname"],phandle)
+		query = "INSERT INTO project (f_name,l_name,email_id,project_link,project_name,project_handle, project_description) values ('%s','%s','%s','%s','%s','%s', '%s') " % (form_dict["fname"],form_dict["lname"],form_dict["emailid"],form_dict["plink"],form_dict["pname"],phandle,form_dict["pdesc"])
 		try :
 			cursor.execute(query)
 			conn.commit()
@@ -106,4 +105,4 @@ app.config['SESSION_TYPE'] = 'filesystem'
 
 sess.init_app(app)
 app.debug = True
-	# app.run()
+#app.run()
