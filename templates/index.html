@@ -357,51 +357,7 @@
             }
         }
     </script> -->
-    <script type="text/javascript">
-    $('.form').find('input, textarea').on('keyup blur focus', function (e) {
 
-  var $this = $(this),
-      label = $this.prev('label');
-
-      if (e.type === 'keyup') {
-            if ($this.val() === '') {
-          label.removeClass('active highlight');
-        } else {
-          label.addClass('active highlight');
-        }
-    } else if (e.type === 'blur') {
-        if( $this.val() === '' ) {
-            label.removeClass('active highlight');
-            } else {
-            label.removeClass('highlight');
-            }
-    } else if (e.type === 'focus') {
-
-      if( $this.val() === '' ) {
-            label.removeClass('highlight');
-            }
-      else if( $this.val() !== '' ) {
-            label.addClass('highlight');
-            }
-    }
-
-});
-
-$('.tab a').on('click', function (e) {
-
-  e.preventDefault();
-
-  $(this).parent().addClass('active');
-  $(this).parent().siblings().removeClass('active');
-
-  target = $(this).attr('href');
-
-  $('.tab-content > div').not(target).hide();
-
-  $(target).fadeIn(600);
-
-});
-</script>
 
 <!-- Adding favicons -->
 <link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png">
@@ -756,6 +712,7 @@ snowStorm.useTwinkleEffect = true; // let the snow flicker in and out of view
 snowStorm.freezeOnBlur = false;
 </script>
 <script type="text/javascript" src="/static/js/smoothscroll.js"></script>
+<script type="text/javascript" src="/static/js/form.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
