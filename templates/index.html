@@ -517,6 +517,7 @@ $('.tab a').on('click', function (e) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
+                      <br><br><br>
                         <h1 class="brand-heading">Timeline</h1>
                     </div>
                 </div>
@@ -611,7 +612,7 @@ $('.tab a').on('click', function (e) {
     </section>
     <!--Form division-->
     <div class="form" id="formid">
-
+      <br><br><br>
           <ul class="tab-group">
             <li class="tab active" id="li_student"><a href="#li_student" onclick=link_student()>Register as Student </a></li>
             <li class="tab" id="li_project"><a href="#li_project" onclick=link_project()>Register your project </a></li>
@@ -619,7 +620,7 @@ $('.tab a').on('click', function (e) {
 
           <!-- <div class="tab-content"> -->
             <div id="student">
-              <h1>Sign Up for Free</h1>
+              <h1>Sign Up Now!</h1>
 
               <form action="/student-register" method="post">
 
@@ -676,10 +677,7 @@ $('.tab a').on('click', function (e) {
                 <input type="github" name="plink" id="plink" placeholder="Project link" autocomplete="off" required>
               </div>
               <div class="field-wrap">
-                <div class="field-wrap">
-                    <input type="github" name="plink" id="plink" placeholder="Project link" autocomplete="off" required>
-                  </div>
-                    <textarea placeholder="Project Description"></textarea>
+                    <textarea name = "pdesc" id="pdesc" placeholder="Project Description"></textarea>
                 </div>
 
 
