@@ -1,4 +1,6 @@
-@import "http://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700";
+/*@import "https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700";*/
+/* latin-ext */
+/*Google fonts import start*/
 header:after, #timeline .timeline-item:after, header:before, #timeline .timeline-item:before {
   content: '';
   display: block;
@@ -159,6 +161,10 @@ header .social .btn {
   -moz-border-radius: 3px 3px 0 0;
   -ms-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
+}
+#timeline .timeline-item .timeline-content p {
+  margin-top: 20px;
+  font-family: "Roboto", sans-serif;
 }
 #timeline .timeline-item .timeline-content:before {
   content: '';
