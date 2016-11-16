@@ -15,8 +15,8 @@
 
     <!-- Custom Fonts -->
     <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> 
 <!--     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> -->
     <!-- Google fonts  -->
     <!-- <link href="/static/css/google-fonts.css" rel="stylesheet" type="text/css">  -->
     <!-- Theme CSS -->
@@ -35,12 +35,12 @@
       width: 75%;
       color: #fff;
       text-align: center;
-      margin: 18px auto 0;
+      margin: 5px auto 0;
     }
     #counter span {
-      font: 70px/1em 'merriweather-bold', serif;
+      font: 60px/1em 'montserrat-regular', serif;
       display: block;
-      padding: 12px 0 30px;
+      padding: 5px 0 30px;
       min-width: 25%;
       float: left;
       text-shadow: 0px 1px 3px rgba(0, 0, 0, .5);
@@ -51,10 +51,9 @@
       font: 11px/18px 'montserrat-regular', sans-serif;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      margin-top: 50x;
+      margin-top: -25px;
       display: block;
-      color: #BCBCBC;
-      color: rgba(255, 255, 255,.6);
+      color: #AAAAAA;
       text-shadow: 0px 1px 2px rgba(0, 0, 0, .7);
     }
 
@@ -95,19 +94,18 @@
     }
 
     body {
-      background: #c1bdba;
-      font-family: 'Titillium Web', sans-serif;
-
+      background: #00081f;
+      font-family: 'montserrat-regular', sans-serif;
     }
 
     a {
       text-decoration: none;
-      color: #1ab188;
+      color: #5498CC;
       -webkit-transition: .5s ease;
       transition: .5s ease;
     }
     a:hover {
-      color: #179b77;
+      color: #6698BB;
     }
 
     .form {
@@ -144,11 +142,11 @@
       transition: .5s ease;
     }
     .tab-group li a:hover {
-      background: #179b77;
+      background: #357fb7;
       color: #ffffff;
     }
     .tab-group .active a {
-      background: #1ab188;
+      background: #5498cc;
       color: #ffffff;
     }
 
@@ -177,7 +175,7 @@
     }
     label .req {
       margin: 2px;
-      color: #1ab188;
+      color: #5498CC;
     }
 
     label.active {
@@ -210,7 +208,7 @@
     }
     input:focus, textarea:focus {
       outline: 0;
-      border-color: #1ab188;
+      border-color: #5498CC;
     }
 
     textarea {
@@ -246,14 +244,14 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: .1em;
-      background: #1ab188;
+      background: #5498CC;
       color: #ffffff;
       -webkit-transition: all 0.5s ease;
       transition: all 0.5s ease;
       -webkit-appearance: none;
     }
     .button:hover, .button:focus {
-      background: #179b77;
+      background: #5498CC;
     }
 
     .button-block {
@@ -305,29 +303,23 @@
     }
 
     .social .link:hover {
-      padding: 20px;
-      color: white;
-      margin-left: -5px;
       transform: translateX(10px) rotate(360deg);
     }
 
     .social .link.google-plus {
-      background-color: tomato;
       color: white;
     }
 
     .social .link.twitter {
-       background-color: #00ACEE;
        color: white;
     }
 
     .social .link.facebook {
-       background-color: #3B5998;
        color: white;
     }
 
     </style>
-    
+
     <!-- Use this for modal -->
 
     <!-- <script type="text/javascript">
@@ -390,7 +382,7 @@
                     Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <img src ="/static/img/kwoc_logo.png" style = "width:60px; height: 64px; display:inline;"> <span class="light"> KHARAGPUR</span> WINTER OF CODE
+                    <img src ="/static/img/kwoc_logo.png" style = "width:60px; height: 60px; display:inline;"> <span class="light"> KHARAGPUR</span> WINTER OF CODE
                 </a>
             </div>
 
@@ -426,23 +418,28 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">KWOC</h1>
+                    	<img src ="/static/img/koss-logo.png" style = "width:100px; height: 100px;">
+                        <p class="brand-heading">KWOC</p>
                         <p class="intro-text">A one month long program for introduction to Open Source.
-                            <br>Organised by KOSS.</p>
+                            <br>Organised by Kharagpur Open Source Society.</p>
                         <a href="#about" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
-                        <h3><br>GOES LIVE IN</h3>
+                        <p><br>GOES LIVE IN</p>
 
 
 
                     </div>
                 </div>
                 <div id="counter" class="cf">
-                            <span class ="days"> <em>days</em></span>
-                            <span class ="hours"> <em>hours</em></span>
-                            <span class ="minutes"> <em>minutes</em></span>
-                            <span class ="seconds"> <em>seconds</em></span>
+                            <span class ="days"> </span>
+                            <span class ="hours"> </span>
+                            <span class ="minutes"> </span>
+                            <span class ="seconds"> </span>
+                            <span><em>days</em></span>
+                            <span><em>hours</em></span>
+                            <span><em>minutes</em></span>
+                            <span><em>seconds</em></span>
                 </div>
             </div>
         </div>
@@ -458,11 +455,11 @@
     <section id="about" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>About KWOC</h2>
-                <p style="color: black"><b>Kharagpur Winter of Code</b> is a 5-weeks program for the students of<br> IIT Kharagpur, who are new to open source.
-                The program will not only help students to get involved in open source, but will also prep them for many open source summer programs, <a style="color: green" href="https://en.wikipedia.org/wiki/Google_Summer_of_Code" target="_blank">Google Summer of Code</a> being one of them.</p>
-                <p style="color: black">Get involved as student by registering below. The instructions will follow and<br> we are with you.</p>
-                <p style="color: black">Or do you want to join as a mentor in the program? Join by registering your project.</p>
+                <h2 style="color: #FFF">About KWOC</h2>
+                <p style="color: #EEE"><b>Kharagpur Winter of Code</b> is a 5-weeks program for the students of<br> IIT Kharagpur, who are new to open source.
+                The program will not only help students to get involved in open source, but will also prep them for many open source summer programs, <a style="color: #357fb7" href="https://en.wikipedia.org/wiki/Google_Summer_of_Code" target="_blank">Google Summer of Code</a> being one of them.</p>
+                <p style="color: #EEE">Get involved as student by registering below. The instructions will follow and we are with you.</p>
+                <p style="color: #EEE">Or do you want to join as a mentor in the program? Join by registering your project.</p>
             </div>
         </div>
     </section>
@@ -473,6 +470,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
+                      <br><br><br>
                         <h1 class="brand-heading">Timeline</h1>
                     </div>
                 </div>
@@ -567,7 +565,7 @@
     </section>
     <!--Form division-->
     <div class="form" id="formid">
-
+      <br><br><br>
           <ul class="tab-group">
             <li class="tab active" id="li_student"><a href="#li_student" onclick=link_student()>Register as Student </a></li>
             <li class="tab" id="li_project"><a href="#li_project" onclick=link_project()>Register your project </a></li>
@@ -575,7 +573,7 @@
 
           <!-- <div class="tab-content"> -->
             <div id="student">
-              <h1>Sign Up for Free</h1>
+              <h1>Sign Up Now!</h1>
 
               <form action="/student-register" method="post">
 
@@ -631,6 +629,10 @@
             <div class="field-wrap">
                 <input type="github" name="plink" id="plink" placeholder="Project link" autocomplete="off" required>
               </div>
+              <div class="field-wrap">
+                    <textarea name = "pdesc" id="pdesc" style="height: 200px;" placeholder="Project Description"></textarea>
+                </div>
+
 
               <input type="submit" class="button button-block" value="Submit">
 
@@ -651,9 +653,9 @@
         <div class="container text-center" id ="contact">
 
             <div class="social">
-  		<a href="https://www.facebook.com/kossiitkgp/?fref=ts" class="link facebook" target="_blank"><img src="/static/img/fb.png" style ="postion:absolute; width:100px;"></a>
-
-  		<a href="https://github.com/kossiitkgp" class="link twitter" target="_blank"><img src = "/static/img/git.png" style = "position:relative; left:1%; border-radius:50%;  width:100px; height:100px;"></span></a>
+  		<a href="https://www.facebook.com/kossiitkgp/?fref=ts" class="" target="_blank"><img src="/static/img/fb.png" style ="postion:absolute; width:120px;"></a>
+      <a href="mailto:kossiitkgp@gmail.com" class="" target="_blank"><img src="/static/img/mail.png" style ="postion:absolute; width:100px;"></a>
+  		<a href="https://github.com/kossiitkgp" class="" target="_blank"><img src = "/static/img/git.png" style = "position:relative; left:1%; border-radius:50%;  width:100px; height:100px;"></span></a>
 <!--
   		<a href="https://plus.google.com/+OndřejBárta-Otaku" class="link google-plus" target="_parent"><img src = ""></span></a> -->
 	    </div>
