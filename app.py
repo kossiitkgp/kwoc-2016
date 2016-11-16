@@ -13,18 +13,18 @@ except Exception as e:
 
 app = Flask(__name__)
 sess=Session()
+if "LOCAL_CHECK" in os.environ :
+	urlparse.uses_netloc.append("postgres")
+	url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
-urlparse.uses_netloc.append("postgres")
-url = urlparse.urlparse(os.environ["DATABASE_URL"])
-
-conn = psycopg2.connect(
-	database=url.path[1:],
-	user=url.username,
-	password=url.password,
-	host=url.hostname,
-	port=url.port
-)
-cursor = conn.cursor()
+	conn = psycopg2.connect(
+		database=url.path[1:],
+		user=url.username,
+		password=url.password,
+		host=url.hostname,
+		port=url.port
+	)
+	cursor = conn.cursor()
 app = Flask(__name__)
 sess=Session()
 
@@ -34,6 +34,8 @@ def student_register():
 	global conn,cursor
 	print("Got request")
 	print(request.method)
+	if "LOCAL_CHECK" not in os.environ :
+		return render_template('index.html' , flag="True" ,msg="Database Connection cannot be set since your running website locally")
 	if request.method == "POST" :
 		form_dict = request.form.to_dict()
 		query = "INSERT INTO student (f_name,l_name,email_id,roll_no,git_handle) values ('%s','%s','%s','%s','%s') " % (form_dict["fname"],form_dict["lname"],form_dict["emailid"],form_dict["rollno"],form_dict["githubhandle"])
@@ -57,6 +59,8 @@ def project_register():
 	global conn,cursor
 	print("Got request")
 	print(request.method)
+	if "LOCAL_CHECK" not in os.environ :
+		return render_template('index.html' , flag="True" ,msg="Database Connection cannot be set since your running website locally")
 	if request.method == "POST" :
 		form_dict = request.form.to_dict()
 		index = form_dict['plink'].find("github.com/")
