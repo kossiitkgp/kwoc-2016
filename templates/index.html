@@ -428,37 +428,34 @@
       var msgcode = "{{ msgcode }}";
       if (msgcode == 0){
         swal({ 
-               title: "00!",  
-               text: "Check your <a style='color: #357fb7' href='https://www.gmail.com' target='_blank'>email</a>!",
-               type: "success",
+               title: "Error!",  
+               text: "{{ msg }}",
+               type: "error",
                confirmButtonText: "Cool",
-               allowOutsideClick: "true",
-               html:"true" 
+               allowOutsideClick: "true"
           });
       }
       if (msgcode == 1){
         swal({ 
-               title: "11!",  
-               text: "Check your <a style='color: #357fb7' href='https://www.gmail.com' target='_blank'>email</a>!",
-               type: "success",
+               title: "Error!",
+               text:"{{ msg}}",
+               type: "error",
                confirmButtonText: "Cool",
-               allowOutsideClick: "true",
-               html:"true" 
+               allowOutsideClick: "true"
           });
       }
       if (msgcode == 2){
         swal({ 
-               title: "22!",  
-               text: "Check your <a style='color: #357fb7' href='https://www.gmail.com' target='_blank'>email</a>!",
-               type: "success",
+               title: "Error!",  
+               text: "{{ msg }}",
+               type: "error",
                confirmButtonText: "Cool",
-               allowOutsideClick: "true",
-               html:"true" 
+               allowOutsideClick: "true" 
           });
       }
       if (msgcode == 3){
         swal({ 
-               title: "33!",  
+               title: "Awesome!",  
                text: "Check your <a style='color: #357fb7' href='https://www.gmail.com' target='_blank'>email</a>!",
                type: "success",
                confirmButtonText: "Cool",
