@@ -51,8 +51,8 @@ def student_register(request):
             mail_check = send_mail(
                 mail_subject, mail_body, form_dict["emailid"])
             if not mail_check:
-                slack_notification("Unable to send mail to the following student :\n{}\nGot the follwing error :\n{}".format(
-                    form_dict, traceback.format_exc()))
+                slack_notification("Unable to send mail to the following student :\n{}".format(
+                    form_dict))
             flag="True"
             msg="You have been successfully registered."
             msgcode=1
