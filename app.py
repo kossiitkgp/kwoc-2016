@@ -45,6 +45,13 @@ def student_register(request):
         try:
             cursor.execute(query)
             conn.commit()
+            mail_subject = "Test Subject"
+            mail_body = "Test Body"
+            mail_check = send_mail(
+                mail_subject, mail_body, form_dict["emailid"])
+            if not mail_check:
+                slack_notification("Unable to send mail to the following student :\n{}\nGot the follwing error :\n{}".format(
+                    form_dict, traceback.format_exc()))
             flag="True"
             msg="You have been successfully registered."
             msgcode=1
@@ -87,6 +94,13 @@ def project_register(request):
         try:
             cursor.execute(query)
             conn.commit()
+            mail_subject = "Test Subject"
+            mail_body = "Test Body"
+            mail_check = send_mail(
+                mail_subject, mail_body, form_dict["emailid"])
+            if not mail_check:
+                slack_notification("Unable to send mail to the following project :\n{}\nGot the follwing error :\n{}".format(
+                    form_dict, traceback.format_exc()))
             flag="True"
             msg="Your project has been successfully registered."
             msgcode=1
