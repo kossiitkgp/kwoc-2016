@@ -46,21 +46,21 @@ def student_register():
         try:
             cursor.execute(query)
             conn.commit()
-            return render_template('index.html', flag="True", msg="You have been successfully registered.",msgcode=3)
+            return render_template('index.html', flag="True", msg="You have been successfully registered.",msgcode=1)
 
         except psycopg2.IntegrityError:
             conn.rollback()
             error_msg = "{}\n\nForm : {}".format(
                 traceback.format_exc(), form_dict)
             slack_notification(error_msg)
-            return render_template('index.html', flag="True", msg="Registration Failed ! User already registered",msgcode=1)
+            return render_template('index.html', flag="True", msg="Registration Failed ! User already registered",msgcode=0)
 
         except:
             conn.rollback()
             error_msg = "{}\n\nForm : {}".format(
                 traceback.format_exc(), form_dict)
             slack_notification(error_msg)
-            return render_template('index.html', flag="True", msg="Registration Failed !", msgcode=2)
+            return render_template('index.html', flag="True", msg="Registration Failed !", msgcode=0)
 
 
 @app.route("/project-register", methods=['GET', 'POST'])
@@ -84,21 +84,21 @@ def project_register():
         try:
             cursor.execute(query)
             conn.commit()
-            return render_template('index.html', flag="True", msg="Your project has been successfully registered.",msgcode=3)
+            return render_template('index.html', flag="True", msg="Your project has been successfully registered.",msgcode=1)
 
         except psycopg2.IntegrityError:
             conn.rollback()
             error_msg = "{}\n\nForm : {}".format(
                 traceback.format_exc(), form_dict)
             slack_notification(error_msg)
-            return render_template('index.html', flag="True", msg="Registration Failed ! Project already exists",msgcode=1)
+            return render_template('index.html', flag="True", msg="Registration Failed ! Project already exists",msgcode=0)
 
         except:
             conn.rollback()
             error_msg = "{}\n\nForm : {}".format(
                 traceback.format_exc(), form_dict)
             slack_notification(error_msg)
-            return render_template('index.html', flag="True", msg="Registration Failed !",msgcode=2)
+            return render_template('index.html', flag="True", msg="Registration Failed !",msgcode=0)
 
 
 @app.route("/")
