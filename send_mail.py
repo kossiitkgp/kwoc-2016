@@ -21,18 +21,19 @@ def slack_notification(message):
         print(r.text)
 
 def send_mail(mail_subject, mail_body, to_email):
-	# credentials = json.load(open('CONFIG', 'r'))
-	msg = MIMEText(mail_body)
-	msg['Subject'] = mail_subject
+    # credentials = json.load(open('CONFIG', 'r'))
+    msg = MIMEText(mail_body)
+    msg.set_type("text/html")
+    msg['Subject'] = mail_subject
     # print (msg)
-	# sending mail
-	try:
-		server = smtplib.SMTP('smtp.gmail.com:587')
-		server.starttls()
-		server.login(os.environ["EMAIL"],os.environ["PASSWORD"])
-		server.sendmail(os.environ["EMAIL"], to_email, msg.as_string())
-		server.quit()
-		return True
-	except :
-		slack_notification("Got following error while sending email : \n{}".format(traceback.format_exc()))
-		return False
+    # sending mail
+    try:
+        server = smtplib.SMTP('smtp.gmail.com:587')
+        server.starttls()
+        server.login(os.environ["EMAIL"],os.environ["PASSWORD"])
+        server.sendmail(os.environ["EMAIL"], to_email, msg.as_string())
+        server.quit()
+        return True
+    except :
+        slack_notification("Got following error while sending email : \n{}".format(traceback.format_exc()))
+        return False
