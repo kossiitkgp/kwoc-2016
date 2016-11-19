@@ -34,7 +34,7 @@ def student_register(request):
     flag = None
     global conn, cursor
     if "LOCAL_CHECK" not in os.environ:
-        msg = "Database Connection cannot be set since your running website locally"
+        msg = "Database Connection cannot be set since you are running website locally"
         msgcode = 0
         return {"web": 'index.html' , "flag":"True", "msg":msg,"msgcode":msgcode}
 
@@ -46,15 +46,16 @@ def student_register(request):
         try:
             cursor.execute(query)
             conn.commit()
-            mail_subject = "Test Subject"
-            mail_body = "Test Body"
+            mail_subject = "Successfully registered for Winter of Code!"
+            mail_body = 'Hello ' + form_dict["fname"] + '\n\n  You have been successfully registered for the <b>Kharagpur Winter of Code</b>. '
+                        'Check out the <a href="http://kwoc.kossiitkgp.in/resources">Resources for KWoC</a> now.'
             mail_check = send_mail(
                 mail_subject, mail_body, form_dict["emailid"])
             if not mail_check:
                 slack_notification("Unable to send mail to the following student :\n{}".format(
                     form_dict))
             flag="True"
-            msg="You have been successfully registered."
+            msg=form_dict["fname"] + ", You have been successfully registered. Please check your email for instructions."
             msgcode=1
             return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
         except psycopg2.IntegrityError:
@@ -72,7 +73,7 @@ def student_register(request):
                 traceback.format_exc(), form_dict)
             slack_notification(error_msg)
             flag="True"
-            msg="Registration Failed !"
+            msg="Registration Failed ! Please try again."
             msgcode=0
             return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
 
@@ -81,7 +82,7 @@ def project_register(request):
     flag = None
     global conn, cursor
     if "LOCAL_CHECK" not in os.environ:
-        msg = "Database Connection cannot be set since your running website locally"
+        msg = "Database Connection cannot be set since you are running website locally"
         msgcode = 0
         flag="True"
         return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
@@ -95,15 +96,16 @@ def project_register(request):
         try:
             cursor.execute(query)
             conn.commit()
-            mail_subject = "Test Subject"
-            mail_body = "Test Body"
+            mail_subject = "Registered " + form_dict["pname"] + " for KWoC!"
+            mail_body = "Hello " + form_dict["fname"] + '\n\nThank you for registering your project on KWoC.\n\n'
+                        'Check out the <a href="http://kwoc.kossiitkgp.in/resources"Resources for KWoC</a> to get started with.'
             mail_check = send_mail(
                 mail_subject, mail_body, form_dict["emailid"])
             if not mail_check:
                 slack_notification("Unable to send mail to the following project :\n{}\nGot the follwing error :\n{}".format(
                     form_dict, traceback.format_exc()))
             flag="True"
-            msg="Your project has been successfully registered."
+            msg="Your project " + form_dict["pname"] + " has been successfully registered. Please check your email for instructions."
             msgcode=1
             return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
         except psycopg2.IntegrityError:
@@ -191,4 +193,4 @@ app.config['SESSION_TYPE'] = 'filesystem'
 
 sess.init_app(app)
 app.debug = True
-# app.run()
+app.run()
