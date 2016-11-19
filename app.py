@@ -123,6 +123,34 @@ def main():
     else :
         return render_template('index.html')
 
+@app.route("/resources")
+def resources():
+    return render_template('resources.html')
+
+@app.route("/resources/timeline")
+def timeline():
+    return render_template('timeline.html')
+
+@app.route("/resources/manuals")
+def manuals():
+    return render_template('manuals.html')
+
+@app.route("/resources/social")
+def social():
+    return render_template('social.html')
+
+@app.route("/resources/media")
+def media():
+    return render_template('media.html')
+
+@app.route("/resources/faq")
+def faq():
+    return render_template('faq.html')
+
+@app.route("/resources/contact")
+def contact():
+    return render_template('contact.html')
+
 
 @app.route("/index")
 def index():
