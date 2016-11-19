@@ -193,4 +193,4 @@ app.config['SESSION_TYPE'] = 'filesystem'
 
 sess.init_app(app)
 app.debug = True
-app.run()
+# app.run()
