@@ -6,6 +6,7 @@ import traceback
 import json
 import requests
 import sys
+from send_mail import send_mail
 
 try:
     import urlparse
