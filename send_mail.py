@@ -4,6 +4,7 @@ import json
 from email.mime.text import MIMEText
 import os
 import requests
+import traceback
 
 def slack_notification(message):
     headers = {
