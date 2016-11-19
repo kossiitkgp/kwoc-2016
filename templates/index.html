@@ -321,37 +321,6 @@
 
     </style>
 
-    <!-- Use this for modal -->
-
-    <!-- <script type="text/javascript">
-               // Get the modal
-        var modal = document.getElementById('myModal');
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script> -->
-
-
 <!-- Adding favicons -->
 <link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/static/favicon/apple-icon-60x60.png">
@@ -371,6 +340,10 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <!--Favicons-->
+
+<script src="static/js/sweetalert-dev.js"></script>
+<link rel="stylesheet" href="static/css/sweetalert.css">
+
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -446,10 +419,32 @@
         </div>
     </header>
       {% if flag %}
-      <script type="text/javascript">
+      <!--<script type="text/javascript">
       console.log("In if")
         alert('{{msg}}');
         window.location.href="/";
+      </script> -->
+      <script type="text/javascript">
+      var msgcode = "{{ msgcode }}";
+      if (msgcode == 0){
+        swal({ 
+               title: "Error!",  
+               text: "{{ msg }}",
+               type: "error",
+               confirmButtonText: "Cool",
+               allowOutsideClick: "true"
+          });
+      }
+      if (msgcode == 1){
+        swal({ 
+               title: "Awesome!",  
+               text: "{{ msg }}",
+               type: "success",
+               confirmButtonText: "Cool",
+               allowOutsideClick: "true",
+               html:"true" 
+          });
+      }
       </script>
       {% endif %}
     <!-- About Section -->
@@ -636,7 +631,6 @@
 
 
               <input type="submit" class="button button-block" value="Submit">
-
 
               </form>
 
