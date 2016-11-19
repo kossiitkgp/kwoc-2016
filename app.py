@@ -47,7 +47,7 @@ def student_register(request):
             cursor.execute(query)
             conn.commit()
             mail_subject = "Successfully registered for Winter of Code!"
-            mail_body = 'Hello ' + form_dict["fname"] + '\n\n  You have been successfully registered for the <b>Kharagpur Winter of Code</b>. '
+            mail_body = 'Hello ' + form_dict["fname"] + '\n\n  You have been successfully registered for the <b>Kharagpur Winter of Code</b>. ' + \
                         'Check out the <a href="http://kwoc.kossiitkgp.in/resources">Resources for KWoC</a> now.'
             mail_check = send_mail(
                 mail_subject, mail_body, form_dict["emailid"])
@@ -97,7 +97,7 @@ def project_register(request):
             cursor.execute(query)
             conn.commit()
             mail_subject = "Registered " + form_dict["pname"] + " for KWoC!"
-            mail_body = "Hello " + form_dict["fname"] + '\n\nThank you for registering your project on KWoC.\n\n'
+            mail_body = "Hello " + form_dict["fname"] + '\n\nThank you for registering your project on KWoC.\n\n' + \
                         'Check out the <a href="http://kwoc.kossiitkgp.in/resources"Resources for KWoC</a> to get started with.'
             mail_check = send_mail(
                 mail_subject, mail_body, form_dict["emailid"])
