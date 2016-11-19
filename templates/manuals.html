@@ -12,6 +12,15 @@
     <!-- Custom css -->
     <link href="/static/css/resources.css" rel="stylesheet" type="text/css">
     <title>Manuals | Kharagpur Winter of Code | KOSS</title>
+
+    <script type="text/javascript">
+      function student_click() {
+        window.open("/static/files/student_manual.pdf", "_blank");
+      }
+      function mentor_click() {
+        window.open("/static/files/mentor_manual.pdf", "_blank");
+      }
+    </script>
   </head>
 
   <body>
@@ -48,11 +57,26 @@
         </div>
 
         <div class="col s9 offset-s1">
-          <font face="times new roman">
-          <a style="color: rgba(0, 0, 0, 0.5); font-size: 36px">Manuals</a>
-
-          </font>
+        <font face="times new roman">
+        <div class="row">
+          <div class="col s12">
+            <a style="color: rgba(0, 0, 0, 0.5); font-size: 36px">Manuals</a><br><br><br>
+            <a style="color: rgba(0, 0, 0, 0.5); font-size: 28px">Student Manual</a>
+            <div class="divider"></div>
+          </div>
+          <div class="col s9 offset-s3" style="padding-top: 10px;">
+            <div id="student" class="btn blue" onclick="student_click()"><b>Read the student manual</b></div>
+          </div>
+          <div class="col s12" style="padding-top: 60px;">
+            <a style="color: rgba(0, 0, 0, 0.5); font-size: 28px;">Mentor Manual</a>
+            <div class="divider"></div>
+          </div>
+          <div class="col s9 offset-s3" style="padding-top: 10px;">
+            <div id="mentor" class="btn blue" onclick="mentor_click()"><b>Read the mentor manual</b></div>
+          </div>
         </div>
+        </div>
+        </font>
       </div>
     </div>
 
