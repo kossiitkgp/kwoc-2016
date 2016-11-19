@@ -427,8 +427,8 @@
       <script type="text/javascript">
       var msgcode = "{{ msgcode }}";
       if (msgcode == 0){
-        swal({ 
-               title: "Error!",  
+        swal({
+               title: "Error!",
                text: "{{ msg }}",
                type: "error",
                confirmButtonText: "Cool",
@@ -436,13 +436,13 @@
           });
       }
       if (msgcode == 1){
-        swal({ 
-               title: "Awesome!",  
+        swal({
+               title: "Awesome!",
                text: "{{ msg }}",
                type: "success",
                confirmButtonText: "Cool",
                allowOutsideClick: "true",
-               html:"true" 
+               html:"true"
           });
       }
       </script>
@@ -571,7 +571,7 @@
             <div id="student">
               <h1>Register as Student!</h1>
 
-              <form action="/student-register" method="post">
+              <form action="/" method="post">
 
               <div class="top-row">
                 <div class="field-wrap">
@@ -602,7 +602,7 @@
             <div id="project" style ="display:none;">
               <h1>Host your project!</h1>
 
-              <form action="/project-register" method="post">
+              <form action="/" method="post">
 
                 <div class="top-row">
                 <div class="field-wrap">

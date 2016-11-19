@@ -5,6 +5,7 @@ import psycopg2
 import traceback
 import json
 import requests
+import sys
 
 try:
     import urlparse
@@ -27,16 +28,14 @@ app = Flask(__name__)
 sess = Session()
 
 
-@app.route("/student-register", methods=['GET', 'POST'])
-def student_register():
+# @app.route("/student-register", methods=['GET', 'POST'])
+def student_register(request):
     flag = None
     global conn, cursor
-    # print("Got request")
-    # print(request.method)
     if "LOCAL_CHECK" not in os.environ:
         msg = "Database Connection cannot be set since your running website locally"
         msgcode = 0
-        return render_template('index.html', flag="True", msg=msg,msgcode=msgcode)
+        return {"web": 'index.html' , "flag":"True", "msg":msg,"msgcode":msgcode}
 
     if request.method == "POST":
         form_dict = request.form.to_dict()
@@ -46,34 +45,38 @@ def student_register():
         try:
             cursor.execute(query)
             conn.commit()
-            return render_template('index.html', flag="True", msg="You have been successfully registered.",msgcode=1)
-
+            flag="True"
+            msg="You have been successfully registered."
+            msgcode=1
+            return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
         except psycopg2.IntegrityError:
             conn.rollback()
             error_msg = "{}\n\nForm : {}".format(
                 traceback.format_exc(), form_dict)
             slack_notification(error_msg)
-            return render_template('index.html', flag="True", msg="Registration Failed ! User already registered",msgcode=0)
-
+            flag="True"
+            msg="Registration Failed ! User already registered"
+            msgcode=0
+            return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
         except:
             conn.rollback()
             error_msg = "{}\n\nForm : {}".format(
                 traceback.format_exc(), form_dict)
             slack_notification(error_msg)
-            return render_template('index.html', flag="True", msg="Registration Failed !", msgcode=0)
+            flag="True"
+            msg="Registration Failed !"
+            msgcode=0
+            return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
 
-
-@app.route("/project-register", methods=['GET', 'POST'])
-def project_register():
+# @app.route("/project-register", methods=['GET', 'POST'])
+def project_register(request):
     flag = None
     global conn, cursor
-    # print("Got request")
-    # print(request.method)
     if "LOCAL_CHECK" not in os.environ:
         msg = "Database Connection cannot be set since your running website locally"
         msgcode = 0
-        return render_template('index.html', flag="True", msg=msg, msgcode=msgcode)
-
+        flag="True"
+        return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
     if request.method == "POST":
         form_dict = request.form.to_dict()
         index = form_dict['plink'].find("github.com/")
@@ -84,26 +87,41 @@ def project_register():
         try:
             cursor.execute(query)
             conn.commit()
-            return render_template('index.html', flag="True", msg="Your project has been successfully registered.",msgcode=1)
-
+            flag="True"
+            msg="Your project has been successfully registered."
+            msgcode=1
+            return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
         except psycopg2.IntegrityError:
             conn.rollback()
             error_msg = "{}\n\nForm : {}".format(
                 traceback.format_exc(), form_dict)
             slack_notification(error_msg)
-            return render_template('index.html', flag="True", msg="Registration Failed ! Project already exists",msgcode=0)
+            flag="True"
+            msg="Registration Failed ! Project already exists"
+            msgcode=0
+            return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
 
         except:
             conn.rollback()
             error_msg = "{}\n\nForm : {}".format(
                 traceback.format_exc(), form_dict)
             slack_notification(error_msg)
-            return render_template('index.html', flag="True", msg="Registration Failed !",msgcode=0)
+            flag="True"
+            msg="Registration Failed !"
+            msgcode=0
+            return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
 
-
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def main():
-    return render_template('index.html')
+    if request.method == "POST" :
+        if "plink" in request.form.to_dict() :
+            reg_dict = project_register(request)
+            return render_template('index.html' , flag=reg_dict["flag"] , msg=reg_dict["msg"],msgcode=reg_dict["msgcode"])
+        else :
+            reg_dict = student_register(request)
+            return render_template('index.html' , flag=reg_dict["flag"] , msg=reg_dict["msg"],msgcode=reg_dict["msgcode"])
+    else :
+        return render_template('index.html')
 
 
 @app.route("/index")
