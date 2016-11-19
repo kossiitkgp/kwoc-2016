@@ -12,6 +12,22 @@
     <!-- Custom css -->
     <link href="/static/css/resources.css" rel="stylesheet" type="text/css">
     <title>Timeline | Kharagpur Winter of Code | KOSS</title>
+
+    <style type="text/css">
+      tr td {
+        max-width: 300px;
+        white-space:normal;
+      }
+
+      @media only screen and (max-width: 992px)
+      table.responsive-table tbody {
+          display: block;
+          width: auto;
+          position: relative;
+          overflow-x: auto;
+          white-space: nowrap;
+      }
+    </style>
   </head>
 
   <body>
@@ -50,7 +66,8 @@
         <div class="col s9 offset-s1">
           <font face="times new roman">
           <a style="color: rgba(0, 0, 0, 0.5); font-size: 36px">Timeline</a>
-          <table class="bordered highlight">
+          </font>
+          <table class="bordered highlight responsive-table">
             <thead>
               <tr>
                 <th>Date</th>
@@ -89,7 +106,6 @@
               </tr>
             </tbody>
           </table>
-          </font>
         </div>
       </div>
     </div>
