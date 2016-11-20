@@ -447,6 +447,9 @@
                confirmButtonText: "Yeah, On it!",
                allowOutsideClick: "true",
                html:"true"
+          },
+          function() {
+            window.open("/resources", "_blank");
           });
       }
       </script>
@@ -456,10 +459,11 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2 style="color: #FFF">About KWOC</h2>
-                <p style="color: #EEE"><b>Kharagpur Winter of Code</b> is a 5-week program for the students of<br> IIT Kharagpur, who are new to open source.
+                <p style="color: #EEE"><b>Kharagpur Winter of Code</b> is a 5-week long <b>online</b> program<br> for the students of IIT Kharagpur, who are new to open source software development.
                 The program will not only help students to get involved in open source, but will also prep them for many open source summer programs, <a style="color: #357fb7" href="https://en.wikipedia.org/wiki/Google_Summer_of_Code" target="_blank">Google Summer of Code</a> being one of them.</p>
-                <p style="color: #EEE">Get involved as student by registering below. The instructions will follow and we are with you.</p>
-                <p style="color: #EEE">Or do you want to join as a mentor in the program? Join by registering your project.</p>
+                <p style="color: #EEE"><a href="#formid" onclick="link_student()">Get involved as student</a> by registering below. The instructions will follow and we are with you.</p>
+                <p style="color: #EEE">Or do you want to <a href="#formid" onclick="link_project()">join as a mentor</a> in the program? Join by registering your project.</p>
+                <div class="btn" style="border: solid;" onclick="window.open('/resources', '_blank')">Checkout the resources</div>
             </div>
         </div>
     </section>
