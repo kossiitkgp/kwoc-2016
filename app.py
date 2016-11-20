@@ -47,8 +47,28 @@ def student_register(request):
             cursor.execute(query)
             conn.commit()
             mail_subject = "Successfully registered for Kharagpur Winter of Code!"
-            mail_body = 'Hello ' + form_dict["fname"] + '<br>You have been successfully registered for the <b>Kharagpur Winter of Code</b>. ' + \
-                        'Check out the <a href="http://kwoc.kossiitkgp.in/resources">Resources for KWoC</a> now.'
+            #mail_body = 'Hello ' + form_dict["fname"] + '<br>You have been successfully registered for the <b>Kharagpur Winter of Code</b>. ' + \
+            #            'Check out the <a href="http://kwoc.kossiitkgp.in/resources">Resources for KWoC</a> now.'
+            mail_body = \
+            '''
+            <table align="center" border="1" cellpadding="0" cellspacing="0" width="600">
+                <tr>
+                <td bgcolor="#70bbd9">
+                    Row 1
+                </td>
+                </tr>
+                <tr>
+                <td bgcolor="#ffffff">
+                    Row 2
+                </td>
+                </tr>
+                <tr>
+                <td bgcolor="#ee4c50">
+                    Row 3
+                </td>
+                </tr>
+            </table>
+            '''
             mail_check = send_mail(
                 mail_subject, mail_body, form_dict["emailid"])
             if not mail_check:
