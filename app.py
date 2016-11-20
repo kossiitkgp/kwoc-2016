@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask, render_template, url_for, request, session, redirect
 from flask_session import Session
 import os
@@ -34,27 +35,85 @@ def student_register(request):
     flag = None
     global conn, cursor
     if "LOCAL_CHECK" not in os.environ:
-        msg = "Database Connection cannot be set since your running website locally"
+        msg = "Database Connection cannot be set since you are running website locally"
         msgcode = 0
         return {"web": 'index.html' , "flag":"True", "msg":msg,"msgcode":msgcode}
 
     if request.method == "POST":
         form_dict = request.form.to_dict()
-        query = "INSERT INTO student (f_name,l_name,email_id,roll_no,git_handle) values ('%s','%s','%s','%s','%s') " % (
+        query = r"INSERT INTO student (f_name,l_name,email_id,roll_no,git_handle) values ('%s','%s','%s','%s','%s') " % (
             form_dict["fname"], form_dict["lname"], form_dict["emailid"], form_dict["rollno"], form_dict["githubhandle"])
 
         try:
             cursor.execute(query)
             conn.commit()
-            mail_subject = "Test Subject"
-            mail_body = "Test Body"
+            mail_subject = "Successfully registered for Kharagpur Winter of Code!"
+            #mail_body = 'Hello ' + form_dict["fname"] + '<br>You have been successfully registered for the <b>Kharagpur Winter of Code</b>. ' + \
+            #            'Check out the <a href="http://kwoc.kossiitkgp.in/resources">Resources for KWoC</a> now.'
+            mail_body = \
+            '''
+            <table align="center" border="1" cellpadding="0" cellspacing="0" width="600">
+                <tr>
+                <td bgcolor="#00081F" align="center" style="padding: 40px 0 30px 0;">
+                    <img src="http://kwoc.kossiitkgp.in/static/img/kwoc_logo.png" width="300" height=auto style="display: block;" />
+                </td>
+                </tr>
+                <tr>
+                <td bgcolor="#ffffff">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="text-align: center">
+                 <tr>
+                  <td>
+                   <b> Hello {0} !</b>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td style="padding: 20px 0 30px 0;">
+                    <b>You have been successfully registered for the Kharagpur Winter of Code</b>. <br>
+                    <br><br>
+                    Kharagpur Winter of Code is one of the many initiatives all around the world for introducing students to Open Source.
+                    Google organizes <a href="https://en.wikipedia.org/wiki/Google_Summer_of_Code" target="_blank">Google Summer of Code</a>
+                    every summer where thousands of students apply and get selected in the
+                    program. They work the entire summer and get paid a handsome reward. While we, sitting at IIT Kharagpur, will be doing
+                    a similar program, on a very small scale. Throughout December, we’ll be mentoring students new to the open source
+                    software development world along with other mentors who sign up for the program, helping them to create their first
+                    Pull Request, and writing their first test suite. After winter, all those students are going to be personally coached
+                    for Google Summer of Code, and it is going to be easier compared to anytime before.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                     <tr>
+                      <td width="260" valign="top">
+                       <a href="kwoc.kossiitkgp.in" target="_blank"><div style="border:1px solid #353535; border-radius:5px; color:white; background-color: #008080"">Visit Website</div></a>
+                      </td>
+                      <td style="font-size: 0; line-height: 0;" width="20">
+                       &nbsp;
+                      </td>
+                      <td width="260" valign="top">
+                       <a href="kwoc.kossiitkgp.in/resources" target="_blank"><div style="border:1px solid #353535; border-radius:5px; color:white; background-color: #008080"">See Resources</div></a>
+                      </td>
+                     </tr>
+                    </table>
+                    <div style="text-align: left">
+                    <ul>
+                      <li> <a href="http://kwoc.kossiitkgp.in/resources/social" target="blank">Join the social groups</a>
+                      <li> Read the <a href="http://kwoc.kossiitkgp.in/resources/manuals" target="_blank">student manual</a>
+                      <li> The projects will be released on December 1st !
+                    </ul
+                    </div>
+                  </td>
+                 </tr>
+                </table>
+            '''
+            mail_body = mail_body.format(form_dict['fname'])
             mail_check = send_mail(
                 mail_subject, mail_body, form_dict["emailid"])
             if not mail_check:
                 slack_notification("Unable to send mail to the following student :\n{}".format(
                     form_dict))
             flag="True"
-            msg="You have been successfully registered."
+            msg=form_dict["fname"] + ", You have been successfully registered. Please check your email for instructions."
             msgcode=1
             return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
         except psycopg2.IntegrityError:
@@ -72,7 +131,7 @@ def student_register(request):
                 traceback.format_exc(), form_dict)
             slack_notification(error_msg)
             flag="True"
-            msg="Registration Failed !"
+            msg="Registration Failed ! Please try again."
             msgcode=0
             return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
 
@@ -81,7 +140,7 @@ def project_register(request):
     flag = None
     global conn, cursor
     if "LOCAL_CHECK" not in os.environ:
-        msg = "Database Connection cannot be set since your running website locally"
+        msg = "Database Connection cannot be set since you are running website locally"
         msgcode = 0
         flag="True"
         return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
@@ -89,21 +148,77 @@ def project_register(request):
         form_dict = request.form.to_dict()
         index = form_dict['plink'].find("github.com/")
         phandle = form_dict['plink'][index + 11:]
-        query = "INSERT INTO project (f_name,l_name,email_id,project_link,project_name,project_handle, project_description) values ('%s','%s','%s','%s','%s','%s', '%s') " % (
+        query = r"INSERT INTO project (f_name,l_name,email_id,project_link,project_name,project_handle, project_description) values ('%s','%s','%s','%s','%s','%s', '%s') " % (
             form_dict["fname"], form_dict["lname"], form_dict["emailid"], form_dict["plink"], form_dict["pname"], phandle, form_dict["pdesc"])
 
         try:
             cursor.execute(query)
             conn.commit()
-            mail_subject = "Test Subject"
-            mail_body = "Test Body"
+            mail_subject = "Registered " + form_dict["pname"] + " for KWoC!"
+            mail_body = \
+            '''
+            <table align="center" border="1" cellpadding="0" cellspacing="0" width="600">
+                <tr>
+                <td bgcolor="#00081F" align="center" style="padding: 40px 0 30px 0;">
+                    <img src="http://kwoc.kossiitkgp.in/static/img/kwoc_logo.png" width="300" height=auto style="display: block;" />
+                </td>
+                </tr>
+                <tr>
+                <td bgcolor="#ffffff">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="text-align: center">
+                 <tr>
+                  <td>
+                   <b> Hello {0} !</b>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td style="padding: 20px 0 30px 0;">
+                    <b>Thank you for registering your project on Kharagpur Winter of Code</b>. <br>
+                    <br><br>
+                    Kharagpur Winter of Code is one of the many initiatives all around the world for introducing students to Open Source.
+                    Google organizes <a href="https://en.wikipedia.org/wiki/Google_Summer_of_Code" target="_blank">Google Summer of Code</a>
+                    every summer where thousands of students apply and get selected in the
+                    program. They work the entire summer and get paid a handsome reward. While we, sitting at IIT Kharagpur, will be doing
+                    a similar program, on a very small scale. Throughout December, we’ll be mentoring students new to the open source
+                    software development world along with other mentors who sign up for the program, helping them to create their first
+                    Pull Request, and writing their first test suite. After winter, all those students are going to be personally coached
+                    for Google Summer of Code, and it is going to be easier compared to anytime before.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                     <tr>
+                      <td width="260" valign="top">
+                       <div style="border:1px solid #353535; border-radius:5px;""><a href="kwoc.kossiitkgp.in" target="_blank">Visit Website</a></div>
+                      </td>
+                      <td style="font-size: 0; line-height: 0;" width="20">
+                       &nbsp;
+                      </td>
+                      <td width="260" valign="top">
+                       <a href="kwoc.kossiitkgp.in/resources" target="_blank"><div style="border:1px solid #353535; border-radius:5px; color:white; background-color: #008080"">See Resources</div></a>
+                      </td>
+                     </tr>
+                    </table>
+                    <div style="text-align: left">
+                    <ul>
+                      <li> <a href="http://kwoc.kossiitkgp.in/resources/social" target="blank">Join the social groups</a>
+                      <li> Read the <a href="http://kwoc.kossiitkgp.in/resources/manuals" target="_blank">mentor manual</a>
+                      <li> Selected projects will be released on December 1st !
+                    </ul
+                    </div>
+                  </td>
+                 </tr>
+                </table>
+            '''
+            mail_body = mail_body.format(form_dict['fname'])
             mail_check = send_mail(
                 mail_subject, mail_body, form_dict["emailid"])
             if not mail_check:
                 slack_notification("Unable to send mail to the following project :\n{}\nGot the follwing error :\n{}".format(
                     form_dict, traceback.format_exc()))
             flag="True"
-            msg="Your project has been successfully registered."
+            msg="Your project " + form_dict["pname"] + " has been successfully registered. Please check your email for instructions."
             msgcode=1
             return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
         except psycopg2.IntegrityError:
