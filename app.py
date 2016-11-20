@@ -155,8 +155,63 @@ def project_register(request):
             cursor.execute(query)
             conn.commit()
             mail_subject = "Registered " + form_dict["pname"] + " for KWoC!"
-            mail_body = "Hello " + form_dict["fname"] + '<br>Thank you for registering your project on KWoC.\n\n' + \
-                        'Check out the <a href="http://kwoc.kossiitkgp.in/resources">Resources for KWoC</a> to get started with.'
+            mail_body = \
+            '''
+            <table align="center" border="1" cellpadding="0" cellspacing="0" width="600">
+                <tr>
+                <td bgcolor="#00081F" align="center" style="padding: 40px 0 30px 0;">
+                    <img src="http://kwoc.kossiitkgp.in/static/img/kwoc_logo.png" width="300" height=auto style="display: block;" />
+                </td>
+                </tr>
+                <tr>
+                <td bgcolor="#ffffff">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="text-align: center">
+                 <tr>
+                  <td>
+                   <b> Hello {0} !</b>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td style="padding: 20px 0 30px 0;">
+                    <b>Thank you for registering your project on Kharagpur Winter of Code</b>. <br>
+                    <br><br>
+                    Kharagpur Winter of Code is one of the many initiatives all around the world for introducing students to Open Source.
+                    Google organizes <a href="https://en.wikipedia.org/wiki/Google_Summer_of_Code" target="_blank">Google Summer of Code</a>
+                    every summer where thousands of students apply and get selected in the
+                    program. They work the entire summer and get paid a handsome reward. While we, sitting at IIT Kharagpur, will be doing
+                    a similar program, on a very small scale. Throughout December, we’ll be mentoring students new to the open source
+                    software development world along with other mentors who sign up for the program, helping them to create their first
+                    Pull Request, and writing their first test suite. After winter, all those students are going to be personally coached
+                    for Google Summer of Code, and it is going to be easier compared to anytime before.
+                  </td>
+                 </tr>
+                 <tr>
+                  <td>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                     <tr>
+                      <td width="260" valign="top">
+                       <div style="border:1px solid #353535; border-radius:5px;""><a href="kwoc.kossiitkgp.in" target="_blank">Visit Website</a></div>
+                      </td>
+                      <td style="font-size: 0; line-height: 0;" width="20">
+                       &nbsp;
+                      </td>
+                      <td width="260" valign="top">
+                       <div style="border:1px solid #353535; border-radius:5px;""><a href="kwoc.kossiitkgp.in/resources" target="_blank">See Resources</a></div>
+                      </td>
+                     </tr>
+                    </table>
+                    <div style="text-align: left">
+                    <ul>
+                      <li> <a href="http://kwoc.kossiitkgp.in/resources/social" target="blank">Join the social groups</a>
+                      <li> Read the <a href="http://kwoc.kossiitkgp.in/resources/manuals" target="_blank">mentor manual</a>
+                      <li> Selected projects will be released on December 1st !
+                    </ul
+                    </div>
+                  </td>
+                 </tr>
+                </table>
+            '''
+            mail_body = mail_body.format(form_dict['fname'])
             mail_check = send_mail(
                 mail_subject, mail_body, form_dict["emailid"])
             if not mail_check:
