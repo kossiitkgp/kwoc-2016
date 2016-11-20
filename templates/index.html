@@ -592,7 +592,7 @@
               </div>
 
               <div class="field-wrap">
-                <input type="rollno" name="rollno" id="rollno" placeholder="Roll number" autocomplete="off" required>
+                <input type="text" name="rollno" id="rollno" placeholder="Roll number" autocomplete="off" required>
               </div>
 
               <div class="field-wrap">
@@ -600,9 +600,9 @@
               </div>
 
             <div class="field-wrap">
-                <input type="github"  name="githubhandle" id="githubhandle" placeholder="Github handle" autocomplete="off" required>
+                <input type="text"  name="githubhandle" id="githubhandle" placeholder="Github handle" autocomplete="off" required>
               </div>
-              <input type="submit" class="button button-block" value="Submit">
+              <input type="submit" class="button button-block" id="student-submit" value="Submit">
               </form>
 
             </div>
@@ -627,11 +627,11 @@
               </div>
 
               <div class="field-wrap">
-                <input type="rollno" name="pname" id="pname" placeholder="Project name" autocomplete="off" required>
+                <input type="text" name="pname" id="pname" placeholder="Project name" autocomplete="off" required>
               </div>
 
             <div class="field-wrap">
-                <input type="github" name="plink" id="plink" placeholder="Project link" autocomplete="off" required>
+                <input type="text" name="plink" id="plink" placeholder="Project link" autocomplete="off" required>
               </div>
               <div class="field-wrap">
                     <textarea name = "pdesc" id="pdesc" style="height: 200px;" placeholder="Project Description"></textarea>
@@ -729,6 +729,29 @@ function link_project() {
 
 </script>
 <script type="text/javascript" src="static/js/back-to-top.js"></script>
+<script type="text/javascript">
+$('#student-submit').click(function(){
+
+  if ( ($.trim($('#fname').val()) == '') || ($.trim($('#lname').val()) == '') || ($.trim($('#rollno').val()) == '') || ($.trim($('#emailid').val()) == '') )
+    {}
+    else {
+   if($.trim($('#githubhandle').val()) == ''){
+     swal({
+            title: "GitHub account mandatory",
+            text: "Create a github account and use the username here",
+            type: "error",
+            confirmButtonText: "Learn more",
+            allowOutsideClick: "true",
+            html:"true"
+       },
+       function() {
+         window.open("http://blog.kossiitkgp.in/2016/11/20/quick-guide-to-git-and-github-part-1/", "_blank");
+       });
+   }}
+
+});
+
+</script>
 </body>
 
 </html>
