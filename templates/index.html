@@ -318,9 +318,18 @@
     .social .link.facebook {
        color: white;
     }
+    .spinner-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ff6347;
+        z-index: 999999;
+        }
 
     </style>
-
+    <link rel="stylesheet" type="text/css" href="/static/css/dozingBird.css">
 <!-- Adding favicons -->
 <link rel="apple-touch-icon" sizes="57x57" href="/static/favicon/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/static/favicon/apple-icon-60x60.png">
@@ -347,6 +356,24 @@
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  <!-- PRELOADER  START -->
+<div class="spinner-wrapper">
+<div class="globe">
+	<div class="bird">
+		<div class="body">
+	  	<div class="eye left"></div>
+	  	<div class="eye right"></div>
+	  	<div class="beak"><div></div></div>
+	  	<div class="feet"></div>
+	    <div class="wire"></div>
+		</div>
+		<div class="hills"></div>
+		<div class="cloud"></div>
+		<div class="cloud small"></div>
+	</div>
+</div>
+</div>
+<!-- PRELOADER END -->
 
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -721,6 +748,20 @@ function link_project() {
 
 </script>
 <script type="text/javascript" src="static/js/back-to-top.js"></script>
+<script>
+$(document).ready(function() {
+//Preloader
+$(window).load(function() {
+preloaderFadeOutTime = 500;
+function hidePreloader() {
+var preloader = $('.spinner-wrapper');
+preloader.fadeOut(preloaderFadeOutTime);
+}
+hidePreloader();
+});
+});
+</script>
+
 </body>
 
 </html>
