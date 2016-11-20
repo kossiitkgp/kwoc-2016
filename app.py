@@ -85,13 +85,13 @@ def student_register(request):
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                      <tr>
                       <td width="260" valign="top">
-                       <div style="border:1px solid #353535; border-radius:5px;""><a href="kwoc.kossiitkgp.in" target="_blank">Visit Website</a></div>
+                       <a href="kwoc.kossiitkgp.in" target="_blank"><div style="border:1px solid #353535; border-radius:5px;"">Visit Website</div></a>
                       </td>
                       <td style="font-size: 0; line-height: 0;" width="20">
                        &nbsp;
                       </td>
                       <td width="260" valign="top">
-                       <div style="border:1px solid #353535; border-radius:5px;""><a href="kwoc.kossiitkgp.in/resources" target="_blank">See Resources</a></div>
+                       <a style="border:1px solid #353535; border-radius:5px;" href="kwoc.kossiitkgp.in/resources" target="_blank"><div>See Resources</div></a>
                       </td>
                      </tr>
                     </table>
