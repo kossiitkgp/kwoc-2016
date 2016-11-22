@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Users</title>
+	    <link rel="stylesheet" href="/static/css/sweetalert.css">
+    <!-- GitHub contribution graph CSS -->
+    <link rel="stylesheet" href="/static/css/github-calendar.css"/>
+    <script type="text/javascript" src="/static/js/github-calendar.min.js"></script>
+</head>
+<body>
+ <h1>{{handle}}</h1>
+    <div id="github-graph" class="github-graph">
+    Contribution Graph Loading
+    </div>
+    <script type="text/javascript">
+    	GitHubCalendar(".github-graph", "{{handle}}");
+    </script>
+
+   <!-- jQuery -->
+    <script src="/static/vendor/jquery/jquery.js"></script>
+
+</body>
+</html>

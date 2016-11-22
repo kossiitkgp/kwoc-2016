@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Leaderboard</title>
+    <script src="static/js/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="static/css/sweetalert.css">
+    <!-- GitHub contribution graph CSS -->
+    <link rel="stylesheet" href="static/css/github-calendar.css"/>
+</head>
+
+<body>
+<script type="text/javascript" src="static/js/github-calendar.min.js"></script>
+    {% if flag %}
+    <!--<script type="text/javascript">
+      console.log("In if")
+        alert('{{msg}}');
+        window.location.href="/";
+      </script> -->
+    <script type="text/javascript">
+    var msgcode = "{{ msgcode }}";
+    if (msgcode == 0) {
+        swal({
+            title: "Oops!",
+            text: "{{ msg }}",
+            type: "error",
+            confirmButtonText: "Get me back!",
+            allowOutsideClick: "true"
+        });
+    }
+    if (msgcode == 1) {
+        swal({
+                title: "Awesome!",
+                text: "{{ msg }}",
+                type: "success",
+                confirmButtonText: "Yeah, On it!",
+                allowOutsideClick: "true",
+                html: "true"
+            },
+            function() {
+                window.open("/resources", "_blank");
+            });
+    }
+    </script>
+    {% endif %}
+    <div id="github-graph" class="github-graph">
+    </div>
+        <div id="github-graph1" class="github-graph">
+    </div>
+    <h1>Recipes</h1> {% for recipe in students_data %}
+    <a href="/leaderboard/user/{{ recipe.git_handle}}">
+        <strong>GitHub Handle:</strong> {{ recipe.git_handle}}
+        <br>
+        <strong>First Name:</strong> {{ recipe.Title }}
+        <br>
+        <strong>Last Name:</strong> {{ recipe.Picture }}
+        <br>
+        <strong>Rating:</strong> {{ recipe.Rating }}
+        <br>
+    </a>
+    </div>
+    <br><br><br>
+    {% endfor %}
+    <!-- jQuery -->
+    <script src="/static/vendor/jquery/jquery.js"></script>
+</script>
+</body>
+
+</html>
