@@ -8,6 +8,7 @@ import json
 import requests
 import sys
 from send_mail import send_mail
+from operator import itemgetter #to sort the list 
 
 try:
 		import urlparse
@@ -271,9 +272,10 @@ def leaderboard():
 			students_data=list()
 			for row in cursor.fetchall() :
 				students_data.append(dict(git_handle=row[0],
-										Title=row[1],
-										Picture=row[2],
+										firstName=row[1],
+										lastName=row[2],
 										Rating=row[3]))
+			students_data = sorted(students_data, key=itemgetter('git_handle')) 
 			return render_template('leaderboard.html' , students_data=students_data)
 	except:
 			conn.rollback()
