@@ -287,7 +287,6 @@ def index():
     return render_template('index.html')
 
 
-# if __name__ == "__main__":
 def slack_notification(message):
     headers = {
         "Content-Type": "application/json"
@@ -305,5 +304,4 @@ app.secret_key = 'kwoc'
 app.config['SESSION_TYPE'] = 'filesystem'
 
 sess.init_app(app)
-app.debug = True
-# app.run()
+app.debug = False
