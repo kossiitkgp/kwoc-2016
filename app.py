@@ -8,6 +8,7 @@ import json
 import requests
 import sys
 from send_mail import send_mail
+from operator import itemgetter #to sort the list 
 
 try:
     import urlparse
@@ -288,7 +289,37 @@ def index():
 
 @app.route("/projects")
 def projects():
-	return render_template("projects.html")
+	global conn, cursor
+	if "LOCAL_CHECK" not in os.environ:
+			msg = "Database Connection cannot be set since you are running website locally"
+			msgcode = 0
+			return render_template('leaderboard.html' , flag="True", msg= msg, msgcode = msgcode)
+	query="SELECT * FROM project"
+	try:
+			cursor.execute(query)
+			# students_data =[dict(git_handle=row[0],
+	 #                  Title=row[1],
+	 #                  Picture=row[2],
+	 #                  Rating=row[3]) for row in cursor.fetchall()]
+			projectsData=list()
+			for index,row in enumerate(cursor.fetchall()) :
+				projectsData.append(dict(projectLink=row[4],
+										projectName=row[5],
+										projectDescription=row[6],
+										projectHandle=row[0],
+										id=index))
+			projectsData = sorted(projectsData, key=itemgetter('projectName')) 
+			return render_template('projects.html' , projectsData=projectsData)
+	except:
+			conn.rollback()
+			error_msg = "Unable to generate projects page\n\n {}".format(
+					traceback.format_exc())
+			print (error_msg)
+			# slack_notification(error_msg)
+			flag="True"
+			print (error_msg)
+			msg="Some internal error occured ! Please try again later."
+			return render_template("index.html",flag=flag , msg=msg,msgcode=0)
 
 def slack_notification(message):
     headers = {
