@@ -312,6 +312,7 @@ def projects():
 										projectName=row[5],
 										projectDescription=row[6],
 										projectHandle=row[0],
+										imageURL=row[7],
 										id=index))
 			projectsData = sorted(projectsData, key=itemgetter('projectName')) 
 			return render_template('projects.html' , projectsData=projectsData)
