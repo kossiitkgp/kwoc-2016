@@ -293,7 +293,7 @@ def projects():
 	if "LOCAL_CHECK" not in os.environ:
 			msg = "Database Connection cannot be set since you are running website locally"
 			msgcode = 0
-			return render_template('leaderboard.html' , flag="True", msg= msg, msgcode = msgcode)
+			return render_template('index.html' , flag="True", msg= msg, msgcode = msgcode)
 	query="SELECT * FROM project"
 	try:
 			cursor.execute(query)
