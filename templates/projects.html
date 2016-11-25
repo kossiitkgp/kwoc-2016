@@ -6,29 +6,41 @@
     <link rel="stylesheet" type="text/css" href="/static/css/projects.css">
     <!-- Bootstrap Core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
-    <!-- Zen Coding / Emmet page string -->
-    <!--
-section#page.flex-container>(header.flex-container>((.logo.flex-item>img[src="http://placehold.it/150x150&text=Logo"alt="logo"])+(.title.flex-item>h1{Title})+(.tools.flex-item>ul>(li>a.tool.tool-${tool $})*3)))+(nav.flex-container>a.flex-item{Nav $}*3)+(article.flex-container.content>.flex-container.flex-item.content-$*3>(.flex-item.item-${Item $}*4))+(aside.flex-container>article.flex-item{Aside article})+(footer.flex-container>.info.flex-item{Info}+.sitemap.flex-item{Sitemap}+.links.flex-item{Links}) 
--->
-    <section id="page" class="flex-container">
-        <header class="flex-container">
-            <div class="title flex-item">
-                <h1>Projects</h1>
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Projects (WIP)
+                </h1>
             </div>
-        </header>
-        <section class="flex-container content-section">
-            <article class="flex-container flex-item content content-1">
-                {% for project in projectsData %}
-                <button type="button" class="content-item flex-item item-1" data-toggle="modal" data-target="#{{project.id}}">
-                    <div>{{project.projectName}}
-                        <br>
-                </button>
+            {% for project in projectsData %}
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-compass"></i> {{' '.join(project.projectName.split()[:3])}}</h4>
+                    </div>
+                    <div class="panel-body" style="height:130px">
+                        <p>{{' '.join(project.projectDescription.split()[:20])+"..."}}</p>
+                            <button type="button" style="position: absolute;right:30px;bottom:30px;"class="btn btn-default" data-toggle="modal" data-target="#{{project.id}}">More</button>
+                    </div>
                 </div>
-                <!-- Modal -->
-                <div id="{{project.id}}" class="modal fade" role="dialog">
+            </div>
+            <div id="{{project.id}}" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                         <!-- Modal content-->
                         <div class="modal-content">
@@ -46,9 +58,9 @@ section#page.flex-container>(header.flex-container>((.logo.flex-item>img[src="ht
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-            </article>
-        </section>
+            {% endfor %}
+        </div>
+
         </script>
         <!-- jQuery -->
         <script src="/static/vendor/jquery/jquery.js"></script>
