@@ -35,6 +35,7 @@
                         <h4><i class="fa fa-fw fa-compass"></i> {{' '.join(project.projectName.split()[:3])}}</h4>
                     </div>
                     <div class="panel-body" style="height:130px">
+                        <img src="{{project.imageURL}}">
                         <p>{{' '.join(project.projectDescription.split()[:20])+"..."}}</p>
                             <button type="button" style="position: absolute;right:30px;bottom:30px;"class="btn btn-default" data-toggle="modal" data-target="#{{project.id}}">More</button>
                     </div>
