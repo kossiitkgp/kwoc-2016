@@ -6,6 +6,11 @@
 
 /* Global Styles */
 
+@font-face {
+    font-family: Lombok;
+    src: url("static/fonts/Lombok.otf") format("opentype");
+}
+
 html,
 body {
     height: 100%;
