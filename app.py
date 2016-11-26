@@ -308,7 +308,8 @@ def projects():
 	 #                  Rating=row[3]) for row in cursor.fetchall()]
 			projectsData=list()
 			for index,row in enumerate(cursor.fetchall()) :
-				projectsData.append(dict(projectLink=row[4],
+				if len(row[0])>0:	
+					projectsData.append(dict(projectLink=row[4],
 										projectName=row[5],
 										projectDescription=row[6],
 										projectHandle=row[0],
@@ -363,4 +364,4 @@ app.secret_key = 'kwoc'
 app.config['SESSION_TYPE'] = 'filesystem'
 
 sess.init_app(app)
-app.debug = False
+app.debug = True
