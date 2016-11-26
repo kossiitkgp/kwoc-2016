@@ -2,12 +2,14 @@
 <html>
 
 <head>
-    <title>Projects</title>
+    <title>Projects | Kharagpur Winter of Code | KOSS</title>
     <link rel="stylesheet" type="text/css" href="/static/css/projects.css">
     <!-- Bootstrap Core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
     <link href="/static/css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -23,9 +25,7 @@
         <!-- Marketing Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">
-                    Projects
-                </h1>
+                <h1 style="font-family: 'Lombok'; font-size: 50px" class="page-header">KWOC PROJECTS</h1>
             </div>
             {% for project in projectsData %}
             <div class="col-md-4">
@@ -36,7 +36,9 @@
                     </div>
                     <div class="panel-body" style="height:130px">
                         
-                        <p style="font-size: 14px">{{' '.join(project.projectDescription.split()[:20])+"..."}}</p>
+                        <p style="font-size: 14px">{{' '.join(project.projectDescription.split()[:15])+"..."}}</p>
+                        <div style="float: left;position: absolute;bottom:25px;"><i class="fa fa-fw fa-code-fork" ></i><p style="font-size: 11px;float: right;">{{project.forkno}}</p></div>
+                        <div style="float: left;position: absolute;left:75px;bottom:25px;"><i class="fa fa-fw fa-star" ></i><p style="font-size: 11px;float: right;">{{project.watcherno}}</p></div>
                             <button type="button" style="font-size: 12px; font-style: italic; color: white;position: absolute;right:30px;bottom:30px;border: 0px;border-radius: 0px;background: #24242D" class="btn btn-default" data-toggle="modal" data-target="#{{project.id}}">More</button>
                     </div>
                 </div>
