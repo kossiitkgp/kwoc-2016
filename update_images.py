@@ -91,7 +91,8 @@ def updateForkNo():
 			conn.rollback()
 			error_msg = "Unable to get all projects\n\n {}".format(
 					traceback.format_exc())
-			print (error_msg)			
+			print (error_msg)	
+
 def getforks(projectHandle):
 	baseQuery="https://api.github.com/repos/{}?access_token={}".format(projectHandle,os.environ["DEFCON_GITHUB_AUTH_TOKEN"])
 	try :
@@ -100,5 +101,43 @@ def getforks(projectHandle):
 		return forkNo
 	except :
 		return "None"
+
+def updatewatcherNo():
+	global conn, cursor
+	if "LOCAL_CHECK" not in os.environ:
+			msg = "Database Connection cannot be set since you are running website locally"
+			print (msg)
+	query="SELECT * FROM project"
+	try:
+		cursor.execute(query)
+		for index,row in enumerate(cursor.fetchall()) :
+			if row[1] == "df" and row[2] == "df" :
+				continue
+			watcherno = getwatchers(row[0])
+			updateQuery = "UPDATE project SET watcherno='%s' WHERE project_handle='%s'" % (str(watcherno),row[0])
+			try :  #updating image URL in the database 
+				cursor.execute(updateQuery)
+				conn.commit()
+			except :
+				conn.rollback()
+				error_msg = "Unable to update watcher no for {}.\nFollowing error occured{}".format(row[0],
+			traceback.format_exc())
+				print (error_msg)
+	except:
+			conn.rollback()
+			error_msg = "Unable to get all projects\n\n {}".format(
+					traceback.format_exc())
+			print (error_msg)	
+
+def getwatchers(projectHandle):
+	baseQuery="https://api.github.com/repos/{}?access_token={}".format(projectHandle,os.environ["DEFCON_GITHUB_AUTH_TOKEN"])
+	try :
+		response = requests.get(baseQuery).json()
+		watcherNo = response["watchers"]
+		return watcherNo
+	except :
+		return "-"
+
+
 if __name__ == "__main__" :
-	updateForkNo()
+	updatewatcherNo()

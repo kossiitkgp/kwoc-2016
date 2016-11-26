@@ -152,12 +152,13 @@ def project_register(request):
 				phandleCopy = phandle[:]
 				imgURL = getimageURL(phandleCopy.split("/")[0])
 				forkno = getforks(row[0])
+				watcherno = getwatchers(row[0])
 				if imgURL :
-					query = r"INSERT INTO project (f_name,l_name,email_id,project_link,project_name,project_handle, project_description,image,forkno) values ('%s','%s','%s','%s','%s','%s', '%s','%s','%s') " % (
-							form_dict["fname"], form_dict["lname"], form_dict["emailid"], form_dict["plink"], form_dict["pname"], phandle, form_dict["pdesc"],imgURL,str(forkno))
+					query = r"INSERT INTO project (f_name,l_name,email_id,project_link,project_name,project_handle, project_description,image,forkno,watcherno) values ('%s','%s','%s','%s','%s','%s', '%s','%s','%s','%s') " % (
+							form_dict["fname"], form_dict["lname"], form_dict["emailid"], form_dict["plink"], form_dict["pname"], phandle, form_dict["pdesc"],imgURL,str(forkno),str(watcherno))
 				else :
-					query = r"INSERT INTO project (f_name,l_name,email_id,project_link,project_name,project_handle, project_description,image,forkno) values ('%s','%s','%s','%s','%s','%s', '%s','%s','%s') " % (
-							form_dict["fname"], form_dict["lname"], form_dict["emailid"], form_dict["plink"], form_dict["pname"], phandle, form_dict["pdesc"],"http://i.imgur.com/nx6cwcv.png",str(forkno))
+					query = r"INSERT INTO project (f_name,l_name,email_id,project_link,project_name,project_handle, project_description,image,forkno,watcherno) values ('%s','%s','%s','%s','%s','%s', '%s','%s','%s','%s') " % (
+							form_dict["fname"], form_dict["lname"], form_dict["emailid"], form_dict["plink"], form_dict["pname"], phandle, form_dict["pdesc"],"http://i.imgur.com/nx6cwcv.png",str(forkno),str(watcherno))
 				try:
 						cursor.execute(query)
 						conn.commit()
@@ -353,8 +354,16 @@ def getforks(projectHandle):
 		forkNo = response["forks"]
 		return forkNo
 	except :
-		return "None"
+		return "-"
 
+def getwatchers(projectHandle):
+	baseQuery="https://api.github.com/repos/{}?access_token={}".format(projectHandle,os.environ["DEFCON_GITHUB_AUTH_TOKEN"])
+	try :
+		response = requests.get(baseQuery).json()
+		watcherNo = response["watchers"]
+		return watcherNo
+	except :
+		return "-"
 
 def slack_notification(message):
 		headers = {
