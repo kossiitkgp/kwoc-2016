@@ -65,5 +65,40 @@ def getimageURL(githubUsername) :  # getting the image url from github
 		print ("Unable to retrive image url for {}\nGot following error :{}".format(githubUsername,traceback.format_exc()))
 		# slack_notification("Unable to retrive image url for {}\nGot following error :{}".format(githubUsername,traceback.format_exc()))
 		return False 
+
+def updateForkNo():
+	global conn, cursor
+	if "LOCAL_CHECK" not in os.environ:
+			msg = "Database Connection cannot be set since you are running website locally"
+			print (msg)
+	query="SELECT * FROM project"
+	try:
+		cursor.execute(query)
+		for index,row in enumerate(cursor.fetchall()) :
+			if row[1] == "df" and row[2] == "df" :
+				continue
+			forkno = getforks(row[0])
+			updateQuery = "UPDATE project SET forkno='%s' WHERE project_handle='%s'" % (str(forkno),row[0])
+			try :  #updating image URL in the database 
+				cursor.execute(updateQuery)
+				conn.commit()
+			except :
+				conn.rollback()
+				error_msg = "Unable to update fork nofor {}.\nFollowing error occured{}".format(row[0],
+			traceback.format_exc())
+				print (error_msg)
+	except:
+			conn.rollback()
+			error_msg = "Unable to get all projects\n\n {}".format(
+					traceback.format_exc())
+			print (error_msg)			
+def getforks(projectHandle):
+	baseQuery="https://api.github.com/repos/{}?access_token={}".format(projectHandle,os.environ["DEFCON_GITHUB_AUTH_TOKEN"])
+	try :
+		response = requests.get(baseQuery).json()
+		forkNo = response["forks"]
+		return forkNo
+	except :
+		return "None"
 if __name__ == "__main__" :
-	updateProjectImage()
+	updateForkNo()
