@@ -98,16 +98,33 @@
                         <p class="brand-heading" style="font-family: 'Lombok';">KWOC</p>
                         <p class="intro-text">A one month long program for introduction to Open Source.
                             <br>Organised by Kharagpur Open Source Society.</p>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
-                        <p><br>GOES LIVE IN</p>
+                        
 
 
 
                     </div>
                 </div>
-                <div id="counter" class="cf">
+                <style>
+			        .proj
+			        {
+			            color: black; margin: auto; background-color: white; text-align: center; height: 80px; width: 300px; border-radius: 10px;
+			        }
+			        .proj:hover
+			        {
+			            background-color:#AAAAAA;
+			        }
+			    </style>
+                <div class="proj" onclick="window.open('/projects', '_blank')">
+                		<p style="text-align: center; vertical-align: middle; line-height: 80px"><i class="fa fa-fw fa-github"></i> View Projects</p>
+                </div>
+
+                        <p><br></p>
+
+                <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+
+                <!-- <div id="counter" class="cf">
                     <span class="days"> </span>
                     <span class="hours"> </span>
                     <span class="minutes"> </span>
@@ -116,7 +133,7 @@
                     <span><em>hours</em></span>
                     <span><em>minutes</em></span>
                     <span><em>seconds</em></span>
-                </div>
+                </div> -->
             </div>
         </div>
     </header>
