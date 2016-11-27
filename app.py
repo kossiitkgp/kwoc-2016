@@ -7,7 +7,7 @@ import traceback
 import json
 import requests
 import sys
-from send_mail import send_mail
+from sendgrid_mail import send_mail
 
 try:
     import urlparse
