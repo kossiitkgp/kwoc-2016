@@ -14,9 +14,11 @@ def send_mail(mail_subject, mail_body, to_email):
 	mail = Mail(from_email=from_email, subject=mail_subject, to_email=to_email, content=content)
 	try :
 		response = sg.client.mail.send.post(request_body=mail.get())
+		return True
 	except urllib.HTTPError :
 		msg= "Got following error while sending mail :{}".format(traceback.format_exc())
 		slack_notification(msg)
+		return False
 
 
 def slack_notification(message):
