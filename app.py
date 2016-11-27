@@ -318,6 +318,8 @@ def projects():
 										imageURL=row[7],
 										forkno=row[8],
 										watcherno=row[9],
+										email=row[3],
+										name="{} {}".format(row[1],row[2]),
 										id=index))
 			projectsData = sorted(projectsData, key=itemgetter('projectName')) 
 			return render_template('projects.html' , projectsData=projectsData)

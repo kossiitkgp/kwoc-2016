@@ -79,6 +79,10 @@
                             </div>
                             <div class="modal-body">
                                 <p>{{project.projectDescription}}</p>
+                                <br>
+                                <p>Mentor : {{project.name}}<br>
+                                    Contact : <a href="mailto:{{project.email}}" target="_blank">{{project.email}}</a>
+                                </p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" style="font-size: 12px; font-style: italic; color: white; border: 0px;border-radius: 0px;background: #24242D" class="btn btn-default" onClick="window.open('{{project.projectLink}}');">View on GitHub</button>
