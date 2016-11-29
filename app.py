@@ -294,6 +294,37 @@ def contact():
 def index():
 		return render_template('index.html')
 
+@app.route("/leaderboard")
+def leaderboard():
+	global conn, cursor
+	if "LOCAL_CHECK" not in os.environ:
+			msg = "Database Connection cannot be set since you are running website locally"
+			msgcode = 0
+			return render_template('leaderboard.html' , flag="True", msg= msg, msgcode = msgcode)
+	query="SELECT * FROM student"
+	try:
+			cursor.execute(query)
+			# students_data =[dict(git_handle=row[0],
+	 #                  Title=row[1],
+	 #                  Picture=row[2],
+	 #                  Rating=row[3]) for row in cursor.fetchall()]
+			students_data=list()
+			for row in cursor.fetchall() :
+				students_data.append(dict(git_handle=row[0],
+										firstName=row[1],
+										lastName=row[2],
+										Rating=row[3]))
+			students_data = sorted(students_data, key=itemgetter('git_handle')) 
+			return render_template('leaderboard.html' , students_data=students_data)
+	except:
+			conn.rollback()
+			error_msg = "{}".format(
+					traceback.format_exc())
+			# slack_notification(error_msg)
+			flag="True"
+			print (error_msg)
+			msg="Registration Failed ! Please try again."
+
 @app.route("/projects")
 def projects():
 	global conn, cursor
