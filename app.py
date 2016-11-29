@@ -294,6 +294,16 @@ def contact():
 def index():
 		return render_template('index.html')
 
+@app.route('/leaderboard/user/<git_handle>', methods=['GET', 'POST'])
+def add_message(git_handle):
+#    print request.status_code
+	# print request.method
+	# print request.form.to_dict()
+   # imd = request.form
+
+	return render_template('user.html',handle=git_handle)
+
+
 @app.route("/leaderboard")
 def leaderboard():
 	global conn, cursor
