@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<meta name="viewport" content="user-scalable = no">
     <title>Projects | Kharagpur Winter of Code | KOSS</title>
     <link rel="stylesheet" type="text/css" href="/static/css/projects.css">
     <!-- Bootstrap Core CSS -->
@@ -57,15 +58,21 @@
             <div class="col-md-4">
                 <div class="panel panel-default" style="background:#24242D;border: 0px;border-radius: 0px">
                     <div class="panel-heading" style="background: #5498CC; border-color: #5498CC; color: white;" >
-                    <img src="{{project.imageURL}}" style="position: absolute;right:30px;top:15px;height:30px;width:30px;border-radius:20px;border-color: white;">
+                    <a target="_blank" href="{{project.orgLink}}">
+                    <img src="{{project.imageURL}}" style="position: absolute;right:30px;top:15px;height:30px;width:30px;border-radius:20px;border-color: white;"> 
+                    </a>
                         <h4><i class="fa fa-fw fa-github"></i> {{' '.join(project.projectName.split()[:2])}}</h4>
                     </div>
                     <div class="panel-body" style="height:130px">
                         
                         <p style="font-size: 14px">{{' '.join(project.projectDescription.split()[:15])+"..."}}</p>
+                        <a target="_blank" href="{{project.projectLink}}">
                         <div style="float: left;position: absolute;bottom:25px;"><i class="fa fa-fw fa-code-fork" ></i><p style="font-size: 11px;float: right;">{{project.forkno}}</p></div>
+                        </a>
+                        <a target="_blank" href="{{project.projectLink}}">
                         <div style="float: left;position: absolute;left:75px;bottom:25px;"><i class="fa fa-fw fa-star" ></i><p style="font-size: 11px;float: right;">{{project.watcherno}}</p></div>
-                            <button type="button" style="font-size: 12px; font-style: italic; color: white;position: absolute;right:30px;bottom:30px;border: 0px;border-radius: 0px;background: #24242D" class="btn btn-default" data-toggle="modal" data-target="#{{project.id}}">More</button>
+                        </a>
+                        <button type="button" style="font-size: 12px; font-style: italic; color: white;position: absolute;right:30px;bottom:30px;border: 0px;border-radius: 0px;background: #24242D" class="btn btn-default" data-toggle="modal" data-target="#{{project.id}}">More</button>
                     </div>
                 </div>
             </div>
@@ -93,7 +100,14 @@
                 </div>
             {% endfor %}
         </div>
-
+        <!-- Making Image clickable -->
+        <script>
+        $(document).ready(function() {
+            $('img#projectIm').click(function() {
+                window.location.href = this.id + '.html';
+            });
+        });
+        </script>
         </script>
         <!-- jQuery -->
         <script src="/static/vendor/jquery/jquery.js"></script>
