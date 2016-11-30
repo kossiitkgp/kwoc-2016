@@ -151,8 +151,8 @@ def project_register(request):
 				phandle = form_dict['plink'][index + 11:]
 				phandleCopy = phandle[:]
 				imgURL = getimageURL(phandleCopy.split("/")[0])
-				forkno = getforks(row[0])
-				watcherno = getwatchers(row[0])
+				forkno = getforks(phandle)
+				watcherno = getwatchers(phandle)
 				if imgURL :
 					query = r"INSERT INTO project (f_name,l_name,email_id,project_link,project_name,project_handle, project_description,image,forkno,watcherno) values ('%s','%s','%s','%s','%s','%s', '%s','%s','%s','%s') " % (
 							form_dict["fname"], form_dict["lname"], form_dict["emailid"], form_dict["plink"], form_dict["pname"], phandle, form_dict["pdesc"],imgURL,str(forkno),str(watcherno))
