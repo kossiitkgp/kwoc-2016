@@ -57,7 +57,9 @@
             <div class="col-md-4">
                 <div class="panel panel-default" style="background:#24242D;border: 0px;border-radius: 0px">
                     <div class="panel-heading" style="background: #5498CC; border-color: #5498CC; color: white;" >
-                    <img src="{{project.imageURL}}" style="position: absolute;right:30px;top:15px;height:30px;width:30px;border-radius:20px;border-color: white;">
+                    <a target="_blank" href="{{project.orgLink}}">
+                    <img src="{{project.imageURL}}" style="position: absolute;right:30px;top:15px;height:30px;width:30px;border-radius:20px;border-color: white;"> 
+                    </a>
                         <h4><i class="fa fa-fw fa-github"></i> {{' '.join(project.projectName.split()[:2])}}</h4>
                     </div>
                     <div class="panel-body" style="height:130px">
@@ -93,7 +95,14 @@
                 </div>
             {% endfor %}
         </div>
-
+        <!-- Making Image clickable -->
+        <script>
+        $(document).ready(function() {
+            $('img#projectIm').click(function() {
+                window.location.href = this.id + '.html';
+            });
+        });
+        </script>
         </script>
         <!-- jQuery -->
         <script src="/static/vendor/jquery/jquery.js"></script>

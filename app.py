@@ -352,6 +352,7 @@ def projects():
 			projectsData=list()
 			for index,row in enumerate(cursor.fetchall()) :
 				if len(row[0])>0:	
+					orgLink = row[4][:row[4].rfind("/")]  
 					projectsData.append(dict(projectLink=row[4],
 										projectName=row[5],
 										projectDescription=row[6],
@@ -360,6 +361,7 @@ def projects():
 										forkno=row[8],
 										watcherno=row[9],
 										email=row[3],
+										orgLink=orgLink,
 										name="{} {}".format(row[1],row[2]),
 										id=index))
 			projectsData = sorted(projectsData, key=itemgetter('projectName')) 
