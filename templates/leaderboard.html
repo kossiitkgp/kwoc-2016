@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="user-scalable = no">
+    <title>Leaderboard</title>
+    <script src="static/js/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="static/css/sweetalert.css">
+    <!-- GitHub contribution graph CSS -->
+    <link rel="stylesheet" href="static/css/github-calendar.css"/>
+    <style type="text/css">
+    	* {
+  box-sizing: border-box;
+}
+h1{
+	text-align: center;
+	
+}
+
+#searchQuery {
+    background-image: url('static/img/searchicon.png'); /* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+#mainTable {
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 18px; /* Increase font-size */
+}
+
+#mainTable th, #mainTable td {
+    text-align: left; /* Left-align text */
+    padding: 12px; /* Add padding */
+}
+
+#mainTable tr {
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid #ddd; 
+}
+
+#mainTable tr.header, #mainTable tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #f1f1f1;
+}
+    </style>
+</head>
+
+<body>
+    {% if flag %}
+    <!--<script type="text/javascript">
+      console.log("In if")
+        alert('{{msg}}');
+        window.location.href="/";
+      </script> -->
+    <script type="text/javascript">
+    var msgcode = "{{ msgcode }}";
+    if (msgcode == 0) {
+        swal({
+            title: "Oops!",
+            text: "{{ msg }}",
+            type: "error",
+            confirmButtonText: "Get me back!",
+            allowOutsideClick: "true"
+        });
+    }
+    if (msgcode == 1) {
+        swal({
+                title: "Awesome!",
+                text: "{{ msg }}",
+                type: "success",
+                confirmButtonText: "Yeah, On it!",
+                allowOutsideClick: "true",
+                html: "true"
+            },
+            function() {
+                window.open("/resources", "_blank");
+            });
+    }
+    </script>
+    {% endif %}
+    <h1>Leaderboard</h1> 
+<input type="text" id="searchQuery" onkeyup="search()" placeholder="Search for names.." title="Type in a name">
+<table id="mainTable">
+  <tr class="header">
+    <th style="width:60%;">GitHub Handle</th>
+    <th style="width:40%;">Name</th>
+  </tr>
+    {% for student in students_data %}
+<!--     <a href="/leaderboard/user/{{ student.git_handle}}">
+        <strong>GitHub Handle:</strong> {{ student.git_handle}}
+        <br>
+        <strong>First Name:</strong> {{ student.Title }}
+        <br>
+        <strong>Last Name:</strong> {{ student.Picture }}
+        <br>
+        <strong>Rating:</strong> {{ student.Rating }}
+        <br>
+    </a> -->
+		<!-- <li><a href="/leaderboard/user/{{ student.git_handle}}">{{student.git_handle}}</a></li> -->
+  <tr data-href="/leaderboard/user/{{ student.git_handle}}">
+    <td>{{student.git_handle}}</td>
+    <td>{{student.firstName}} {{student.lastName}}</td>
+  </tr>
+<!--     <br><br><br> -->
+    {% endfor %}
+    </ul>
+    <!-- jQuery -->
+    <script src="/static/vendor/jquery/jquery.js"></script>
+</script>
+
+<!-- Javascript for search function -->
+<script>
+function search() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("searchQuery");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("mainTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td1 = tr[i].getElementsByTagName("td")[0];
+    td2 = tr[i].getElementsByTagName("td")[1];
+    if ((td) || (td2)) {
+      if ((td1.innerHTML.toUpperCase().indexOf(filter) > -1) || (td2.innerHTML.toUpperCase().indexOf(filter) > -1))  {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>
+
+<!-- Script to make table clickable -->
+<script type="text/javascript">
+	$('tr[data-href]').on("click", function() {
+    document.location = $(this).data('href');
+});
+</script>
+</body>
+
+</html>
