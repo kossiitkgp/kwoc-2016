@@ -66,10 +66,10 @@
                     <div class="panel-body" style="height:130px">
                         
                         <p style="font-size: 14px">{{' '.join(project.projectDescription.split()[:15])+"..."}}</p>
-                        <a target="_blank" href="{{project.projectLink}}">
+                        <a target="_blank" href="{{project.projectLink}}" style="color: rgb(255,255,255)">
                         <div style="float: left;position: absolute;bottom:25px;"><i class="fa fa-fw fa-code-fork" ></i><p style="font-size: 11px;float: right;">{{project.forkno}}</p></div>
                         </a>
-                        <a target="_blank" href="{{project.projectLink}}">
+                        <a target="_blank" href="{{project.projectLink}}" style="color: rgb(255,255,255)">
                         <div style="float: left;position: absolute;left:75px;bottom:25px;"><i class="fa fa-fw fa-star" ></i><p style="font-size: 11px;float: right;">{{project.watcherno}}</p></div>
                         </a>
                         <button type="button" style="font-size: 12px; font-style: italic; color: white;position: absolute;right:30px;bottom:30px;border: 0px;border-radius: 0px;background: #24242D" class="btn btn-default" data-toggle="modal" data-target="#{{project.id}}">More</button>
