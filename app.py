@@ -371,7 +371,8 @@ def projects():
 										orgLink=orgLink,
 										name="{} {}".format(row[1],row[2]),
 										id=index))
-			projectsData = sorted(projectsData, key=itemgetter('projectName')) 
+			projectsData = sorted(projectsData, key=lambda x: x['projectName'].lower()) 
+			# projectsData = sorted(projectsData, key=itemgetter('projectName')) 
 			return render_template('projects.html' , projectsData=projectsData)
 	except:
 			conn.rollback()
