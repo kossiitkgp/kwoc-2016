@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+import sys
+from imp import reload
+reload(sys)
+sys.setdefaultencoding('utf8')
+#above three lines are IMPORTANT
+
 import psycopg2
 import requests
 import os

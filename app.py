@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 import sys
+from imp import reload
 reload(sys)
 sys.setdefaultencoding('utf8')
+#above three lines are IMPORTANT
+
 from flask import Flask, render_template, url_for, request, session, redirect
 from flask_session import Session
 import os
