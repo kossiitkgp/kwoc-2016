@@ -154,6 +154,8 @@ def project_register(request):
 				return {"web": 'index.html' , "flag":flag, "msg":msg,"msgcode":msgcode}
 		if request.method == "POST":
 				form_dict = request.form.to_dict()
+				form_dict["pdesc"]=form_dict["pdesc"].replace("'","`")
+				form_dict["pname"]=form_dict["pname"].replace("'","`")
 				index = form_dict['plink'].find("github.com/")
 				phandle = form_dict['plink'][index + 11:]
 				phandleCopy = phandle[:]
