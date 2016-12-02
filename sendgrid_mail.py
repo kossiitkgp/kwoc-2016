@@ -2,7 +2,10 @@
 import sys
 from imp import reload
 reload(sys)
-sys.setdefaultencoding('utf8')
+try :
+	sys.setdefaultencoding('utf8')
+except :
+	pass
 #above three lines are IMPORTANT
 
 import sendgrid

@@ -2,7 +2,10 @@
 import sys
 from imp import reload
 reload(sys)
-sys.setdefaultencoding('utf8')
+try :
+	sys.setdefaultencoding('utf8')
+except :
+	pass
 #above three lines are IMPORTANT
 
 from flask import Flask, render_template, url_for, request, session, redirect
@@ -331,8 +334,8 @@ def leaderboard():
 			for row in cursor.fetchall() :
 				students_data.append(dict(git_handle=row[0],
 										firstName=row[1],
-										lastName=row[2],
-										Rating=row[3]))
+										lastName=row[2]
+										))
 			students_data = sorted(students_data, key=itemgetter('git_handle')) 
 			return render_template('leaderboard.html' , students_data=students_data)
 	except:
@@ -342,7 +345,8 @@ def leaderboard():
 			# slack_notification(error_msg)
 			flag="True"
 			print (error_msg)
-			msg="Registration Failed ! Please try again."
+			msg="Unable to open Leaderboard ! Please try again."
+			return render_template("index.html",flag=flag , msg=msg,msgcode=0)
 
 @app.route("/projects")
 def projects():
