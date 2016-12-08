@@ -113,8 +113,9 @@
 			            margin: auto; 
 			            background-color: white; 
 			            text-align: center; 
+			            display: inline-block;
 			            height: 70px; 
-			            width: 300px; 
+			            width: 280px; 
 			            border-radius: 10px;
 			        }
 			        .proj:hover
@@ -125,8 +126,13 @@
 						border-color: white;	
 					}		        }
 			    </style>
-                <div class="proj" onclick="window.open('/projects', '_blank')">
-                		<p style="text-align: center; vertical-align: middle; line-height: 70px"><i class="fa fa-fw fa-github"></i> View Projects</p>
+                <div style="text-align: center;" >
+	                <div class="proj" onclick="window.open('/projects', '_blank')">
+	                		<p style="text-align: center; vertical-align: middle; line-height: 70px"><i class="fa fa-fw fa-github"></i> Projects</p>
+	                </div>
+	                <div class="proj" onclick="window.open('/leaderboard', '_blank')">
+	                		<p style="text-align: center; vertical-align: middle; line-height: 70px"><i class="fa fa-fw fa-male"></i> Leaderboard</p>
+	                </div>
                 </div>
 
                         <p><br></p>
@@ -293,15 +299,19 @@
             </div>
         </div>
     </section>
-    <!--Form division-->
+
     <div class="form" id="formid">
+    	<h3 style="text-align: center; vertical-align: middle;">Registrations closed. We hope to see you next year!</h3>
+    </div>
+
+    <!--Form division-->
+    <!-- <div class="form" id="formid">
         <br><br><br>
         <ul class="tab-group">
             <li class="tab active" id="li_student"><a href="#li_student" onclick=link_student()>Register as Student </a></li>
             <li class="tab" id="li_project"><a href="#li_project" onclick=link_project()>Register your project </a></li>
         </ul>
 
-        <!-- <div class="tab-content"> -->
         <div id="student">
             <h1>Register as Student!</h1>
 
@@ -372,7 +382,7 @@
 
     </div>
 
-    </div>
+    </div> -->
     <!--/form -->
     <!-- Map Section -->
 
