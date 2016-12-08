@@ -34,46 +34,63 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
 
     <style type="text/css">
-        * {
-  box-sizing: border-box;
-}
-h1{
-    text-align: center;
-    
-}
+        *{
+            box-sizing: border-box;
+        }
+        h1{
+            text-align: center;
+        }
+        #searchQuery {
+            width: 100%; /* Full-width */
+            font-size: 18px; /* Increase font-size */
+            color: #000000;
+            font-family: 'montserrat-regular', sans-serif;
+            padding: 12px 20px 12px 40px; /* Add some padding */
+            border: 1px solid #ddd; /* Add a grey border */
+            margin-bottom: 12px; /* Add some space below the input */
+            background-color: #d6bbe8;
+        }
 
-#searchQuery {
-    background-image: url('static/img/searchicon.png'); /* Add a search icon to input */
-    background-position: 10px 12px; /* Position the search icon */
-    background-repeat: no-repeat; /* Do not repeat the icon image */
-    width: 100%; /* Full-width */
-    font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 12px 40px; /* Add some padding */
-    border: 1px solid #ddd; /* Add a grey border */
-    margin-bottom: 12px; /* Add some space below the input */
-}
+        #mainTable {
+            border-collapse: collapse; /* Collapse borders */
+            width: 100%; /* Full-width */
+            border: 1px solid #ddd; /* Add a grey border */
+            font-size: 18px; /* Increase font-size */
+        }
 
-#mainTable {
-    border-collapse: collapse; /* Collapse borders */
-    width: 100%; /* Full-width */
-    border: 1px solid #ddd; /* Add a grey border */
-    font-size: 18px; /* Increase font-size */
-}
+        #mainTable th, #mainTable td {
+            text-align: left; /* Left-align text */
+            padding: 12px; /* Add padding */
+        }
 
-#mainTable th, #mainTable td {
-    text-align: left; /* Left-align text */
-    padding: 12px; /* Add padding */
-}
+        #mainTable tr {
+            /* Add a bottom border to all table rows */
+            border-bottom: 1px solid #ddd; 
+        }
 
-#mainTable tr {
-    /* Add a bottom border to all table rows */
-    border-bottom: 1px solid #ddd; 
-}
+        #mainTable tr.header {
+            /* Add a grey background color to the table header and on hover */
+            background-color: #000000;
+        }
+        #mainTable tr:hover {
+            background-color: #4286f4;
+        }
+        ::-webkit-input-placeholder {
+           color: #030133;
+        }
 
-#mainTable tr.header, #mainTable tr:hover {
-    /* Add a grey background color to the table header and on hover */
-    background-color: #000000;
-}
+        :-moz-placeholder { /* Firefox 18- */
+           color: #030133;  
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+           color: #030133;  
+        }
+
+        :-ms-input-placeholder {  
+           color: #030133;  
+        }
+
     </style>
 
 </head>
