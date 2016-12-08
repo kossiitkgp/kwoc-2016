@@ -49,8 +49,8 @@ def student_register(request):
 
 		if request.method == "POST":
 				form_dict = request.form.to_dict()
-				query = r"INSERT INTO student (f_name,l_name,email_id,roll_no,git_handle) values ('%s','%s','%s','%s','%s') " % (
-						form_dict["fname"], form_dict["lname"], form_dict["emailid"], form_dict["rollno"], form_dict["githubhandle"])
+				query = r"INSERT INTO student (f_name,l_name,email_id,roll_no,git_handle,commits) values ('%s','%s','%s','%s','%s','%s') " % (
+						form_dict["fname"], form_dict["lname"], form_dict["emailid"], form_dict["rollno"], form_dict["githubhandle"],"0")
 
 				try:
 						cursor.execute(query)
