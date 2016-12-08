@@ -89,8 +89,9 @@ h1{
 <input type="text" id="searchQuery" onkeyup="search()" placeholder="Search for names.." title="Type in a name">
 <table id="mainTable">
   <tr class="header">
-    <th style="width:60%;">GitHub Handle</th>
-    <th style="width:40%;">Name</th>
+    <th style="width:40%;">GitHub Handle</th>
+    <th style="width:30%;">Name</th>
+    <th style="width:30%;"> Commits</th>
   </tr>
     {% for student in students_data %}
 <!--     <a href="/leaderboard/user/{{ student.git_handle}}">
@@ -107,6 +108,7 @@ h1{
   <tr data-href="/leaderboard/user/{{ student.git_handle}}">
     <td>{{student.git_handle}}</td>
     <td>{{student.firstName}} {{student.lastName}}</td>
+    <td>{{student.commits}}</td>
   </tr>
 <!--     <br><br><br> -->
     {% endfor %}

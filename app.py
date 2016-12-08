@@ -334,9 +334,10 @@ def leaderboard():
 			for row in cursor.fetchall() :
 				students_data.append(dict(git_handle=row[0],
 										firstName=row[1],
-										lastName=row[2]
+										lastName=row[2],
+										commits=int(row[5])
 										))
-			students_data = sorted(students_data, key=itemgetter('git_handle')) 
+			students_data = sorted(students_data, key=itemgetter('commits') , reverse=True) 
 			return render_template('leaderboard.html' , students_data=students_data)
 	except:
 			conn.rollback()
