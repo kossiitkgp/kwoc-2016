@@ -2,7 +2,10 @@
 import sys
 from imp import reload
 reload(sys)
-sys.setdefaultencoding('utf8')
+try :
+	sys.setdefaultencoding('utf8')
+except :
+	pass
 #above three lines are IMPORTANT
 
 from flask import Flask, render_template, url_for, request, session, redirect
@@ -49,8 +52,8 @@ def student_register(request):
 
 		if request.method == "POST":
 				form_dict = request.form.to_dict()
-				query = r"INSERT INTO student (f_name,l_name,email_id,roll_no,git_handle) values ('%s','%s','%s','%s','%s') " % (
-						form_dict["fname"], form_dict["lname"], form_dict["emailid"], form_dict["rollno"], form_dict["githubhandle"])
+				query = r"INSERT INTO student (f_name,l_name,email_id,roll_no,git_handle,commits) values ('%s','%s','%s','%s','%s','%s') " % (
+						form_dict["fname"], form_dict["lname"], form_dict["emailid"], form_dict["rollno"], form_dict["githubhandle"],"0")
 
 				try:
 						cursor.execute(query)
@@ -332,8 +335,9 @@ def leaderboard():
 				students_data.append(dict(git_handle=row[0],
 										firstName=row[1],
 										lastName=row[2],
-										Rating=row[3]))
-			students_data = sorted(students_data, key=itemgetter('git_handle')) 
+										commits=int(row[5])
+										))
+			students_data = sorted(students_data, key=itemgetter('commits') , reverse=True) 
 			return render_template('leaderboard.html' , students_data=students_data)
 	except:
 			conn.rollback()
@@ -342,7 +346,8 @@ def leaderboard():
 			# slack_notification(error_msg)
 			flag="True"
 			print (error_msg)
-			msg="Registration Failed ! Please try again."
+			msg="Unable to open Leaderboard ! Please try again."
+			return render_template("index.html",flag=flag , msg=msg,msgcode=0)
 
 @app.route("/projects")
 def projects():
