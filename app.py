@@ -332,6 +332,8 @@ def leaderboard():
 	 #                  Rating=row[3]) for row in cursor.fetchall()]
 			students_data=list()
 			for row in cursor.fetchall() :
+				if int(row[5]) == 0 :
+					continue
 				students_data.append(dict(git_handle=row[0],
 										firstName=row[1],
 										lastName=row[2],
